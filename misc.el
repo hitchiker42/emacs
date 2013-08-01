@@ -2,6 +2,7 @@
   "Indent entire buffer using indent-region"
   (interactive)
   (indent-region (point-min) (point-max)))
+
 (defun quote-region (start end &optional quote-char)
   "quote the region defined by start and end using quote-char"
   (interactive "r")
@@ -14,6 +15,7 @@
       (insert quote)
       (goto-char (1+ end))
       (insert quote)))))
+
 (defun make-scratch (mode &optional name switch)
 "create a scratch buffer with major mode mode,
 if optional argument name is given the buffer will be named name
@@ -29,6 +31,7 @@ the name of mode with any -mode suffix removed"
       (funcall mode))
   (if (not (null switch))
       (switch-to-buffer name))))
+
 (defun find-files (files)
 "open multiple files at once, flatten nested lists by one level
  if need be (kludge to make this work in eshell"
@@ -37,6 +40,8 @@ the name of mode with any -mode suffix removed"
         (dolist (j i)
           (find-file j))
       (find-file i))))
+
+
 (defmacro as-command (fun &rest args)
 "return a fun as a command to be called interactively
 mainly used to call a non interactive elisp function interactively
@@ -45,4 +50,5 @@ function is called with arguments args, interactive spec is always nil"
 (if (commandp fun)
     'fun
   `(lambda () (interactive) (,fun ,@args))))
+
 

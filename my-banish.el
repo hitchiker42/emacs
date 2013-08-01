@@ -55,4 +55,4 @@ If you want the mouse banished to a different corner set
   "Put the mouse pointer to `my-banish-position'."
   (interactive)
   (my-set-mouse-position (my-banish-destination)))
-(provide 'my-banish-mouse)
+(provide 'my-banish)
