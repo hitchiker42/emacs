@@ -11,13 +11,11 @@
 (defalias 'elisp-mode 'emacs-lisp-mode)
 (defalias 'eshell-new 'multi-eshell)
 (defalias 'perl-mode 'cperl-mode)
-(require 'auto-complete)
-(require 'rainbow-delimiters)
-(require 'w3m-autoloads)
-(require 'wind-swap)
-(require 'mlton)
-(require 'auto-async-byte-compile)
-(require 'uniquify)
+;;require packages
+(dolist (package 
+'(auto-complete rainbow-delimiters w3m-autoloads wind-swap
+  mlton auto-async-byte-compile uniquify julia-mode constants))
+  (require package))
 (global-rainbow-delimiters-mode)
 (global-auto-complete-mode)
 (icicle-mode)
@@ -34,6 +32,7 @@
  org-replace-disputed-keys t
  x-select-enable-clipboard t
  x-select-enable-primary t
+ confirm-kill-emacs #'y-or-n-p 
  emacs-lisp-mode-hook '(turn-on-eldoc-mode enable-auto-async-byte-compile-mode)
  ;;This regexp should ignore all backup Files
  auto-async-byte-compile-exclude-files-regexp ".*~$\|^#.*#$"
@@ -41,6 +40,7 @@
  scroll-conservatively 10000
  browse-kill-ring-quit-action 'save-and-restore
  iswitchb-default-method 'maybe-frame
+ iconify-or-deiconify-frame nil
  auto-window-vscroll nil)
 ;;;Automode stuff
 (cl-flet ((temp (x) (add-to-list 'auto-mode-alist x)))
@@ -48,13 +48,15 @@
                    ("\\.mlb\\'" . sml-mode)
                    ("PKGBUILD" . pkgbuild-mode)
                    ("/\\..*rc\\'" . conf-unix-mode)
-                   ("/\\.?bash" . sh-mode))))
+                   ("/\\.?bash" . sh-mode)
+                   ("\\.jl\\'" . julia-mode))))
 
 ;;;Keys
 ;;regexp stuff
 (define-key global-map [?\C-c ?r] 'replace-regexp)
 (define-key global-map [?\C-s] 'isearch-forward-regexp)
 (define-key global-map [?\C-r] 'isearch-backward-regexp)
+(define-key global-map [?\C-z] 'nil)
 (define-key global-map [?\C-c ?q ?r] 'query-replace-regexp)
 (define-key global-map [?\C-\M-s] 'isearch-forward)
 (define-key global-map [?\C-\M-r] 'isearch-backward)
@@ -62,6 +64,7 @@
 (define-key global-map [?\C-x ?\C-g] 'keyboard-quit)
 ;(define-key global-map "\M-/" 'hippie-expand)
 (define-key global-map '[C-tab] 'hippie-expand)
+(define-key global-map [?\C-c ?u] 'insert-char)
 ;;eval map, not sure why I could never get this to work before
 (define-prefix-command 'eval-map)
 (define-key global-map [?\C-c ?e] 'eval-map)
@@ -74,7 +77,6 @@
 ;;reverting buffers is useful, changing coding systems not so much
 (define-key ctl-x-map '[?\r ?r] 'revert-buffer)
 (define-key ctl-x-map '[?\C-b] 'ibuffer)
-
 ;;prefix keys ESC(esc-map),C-h(help-map),C-c(mode-specific-map)
 ;;C-x(ctl-x-map),C-x RET(mule-keymap),C-x 4/5(ctl-4-map,ctl-5-map)
 ;;C-x 6 (2C-mode-map),C-x v(vc-prefix-map),M-g(goto-map),M-s(search-map)
@@ -119,6 +121,8 @@
 (require 'my-banish)
 (define-prefix-command 'f2-map)
 (define-key global-map [f2] 'f2-map)
+(define-key global-map [?\M-p] 'f2-map)
+(define-key f2-map [?a] 'beginning-of-line-text)
 (define-key f2-map [?b] 'my-banish-mouse);send mouse to bottom right corner
 (define-key f2-map [?c] 'comment-region)
 (define-key f2-map [?e] 'multi-eshell)
@@ -127,9 +131,26 @@
 (define-key f2-map [?n] ;echo filname of current buffer
   '(lambda () (interactive) (message (buffer-file-name))))
 (define-key f2-map [?p] 'list-packages)
+(define-key f2-map [?s] 'sort-lines)
 (define-key f2-map [?u] 'uncomment-region)
 (define-key f2-map [?w] 'whitespace-cleanup)
 (define-key f2-map [?y] 'browse-kill-ring)
+
+(define-prefix-command 'f3-map)
+(define-key global-map [f3] 'f3-map)
+(define-key global-map [?\M-n] 'f3-map)
+(define-key f3-map [?u] 'insert-char)
+;;overide any bindings for M-p so I can use it
+(defvar my-keys-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+(setq my-keys-mode-map (make-keymap))
+(define-key my-keys-mode-map [?\M-p] 'f2-map)
+(define-key my-keys-mode-map [?\M-n] 'f3-map)
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t :lighter "" :keymap my-keys-mode-map)
+(define-global-minor-mode my-keys-global-minor-mode my-keys-minor-mode
+  my-keys-minor-mode)
+(my-keys-global-minor-mode 1)
 ;;;Set theme path based on files in elpa directory
 (require 'dash)
 (require 's)
@@ -145,13 +166,15 @@
 (load-theme 'zenburn t)
 
 ;;;Maxima
-;; (add-to-list 'load-path
-;;              "/usr/share/maxima/branch_5_30_base_87_gab7ecfd_dirty/emacs/")
-;; (autoload 'maxima-mode "maxima" "Maxima mode" t)
-;; (autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)
-;; (autoload 'maxima "maxima" "Maxima interaction" t)
-;; (autoload 'imath-mode "imathn" "Imath mode for math formula input" t)
-;; (setq imaxima-use-maxima-mode-flag t)
+ (add-to-list 'load-path
+              "/home/tucker/usr/share/maxima/branch_5_30_base_188_ga88b18b/emacs/")
+ (autoload 'maxima-mode "maxima" "Maxima mode" t)
+ (autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)
+ (autoload 'maxima "maxima" "Maxima interaction" t)
+ (autoload 'imath-mode "imathn" "Imath mode for math formula input" t)
+ (setq imaxima-use-maxima-mode-flag t
+       maxima-command "/home/tucker/usr/bin/maxima")
+
 
 ;;; Backup files
 ;; Put them in one nice place if possible
@@ -191,12 +214,12 @@
         (sequence "OPT" "|" "OPT(DONE)")
         (sequence "OPT(CANCELED)")))
 ;;(add-to-list 'org-src-lang-modes '("sml" . sml-mode))
-
+;;Enable/Disable commands
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'overwrite-mode 'disabled t)
+(put 'narrow-to-region 'disabled nil)
 ;;Iswitchb
 (load "my-iswitchb.elc")
+(iswitchb-mode)
 
-;;Enable/Disable commands
-(put 'downcase-region 'enabled t)
-(put 'upcase-region 'enabled t)
-(put 'overwrite-mode 'disabled t)
-(put 'narrow-to-region 'enabled t)

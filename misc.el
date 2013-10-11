@@ -34,7 +34,7 @@ the name of mode with any -mode suffix removed"
 
 (defun find-files (files)
 "open multiple files at once, flatten nested lists by one level
- if need be (kludge to make this work in eshell"
+ if need be (kludge to make this work in eshell)"
   (dolist (i files) 
     (if (listp i)
         (dolist (j i)
@@ -50,5 +50,17 @@ function is called with arguments args, interactive spec is always nil"
 (if (commandp fun)
     'fun
   `(lambda () (interactive) (,fun ,@args))))
-
-
+(defun re-search-line-forward (re &optional no-error count)
+  (re-search-forward re (save-excursion (end-of-line)(point))
+                     no-error count))
+(defun re-search-line-backward (re &optional no-error count)
+  (re-search-backward re (save-excursion (beginning-of-line)(point))
+                     no-error count))
+(defun replace-regexp-lisp (from-string to-string &optional bound)
+"lisp code emulating the behavior of replace-regexp, but without
+altering the mark or printing anything."
+  (while (re-search-forward from-string bound nil)
+    (replace-match to-string nil nil)))
+(defun princ-line (val)
+  (insert "\n")
+  (princ val (current-buffer)))
