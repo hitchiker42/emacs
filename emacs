@@ -1,3 +1,4 @@
+;;-*-emacs-lisp-*-
 ;;;My emacs lisp init file, Everything execept for custom set vars/faces
 (add-to-list 'load-path "/home/tucker/.emacs.d")
 (add-to-list 'load-path "/home/tucker/.emacs.d/my-elisp")
@@ -135,6 +136,7 @@
 (define-key f2-map [?u] 'uncomment-region)
 (define-key f2-map [?w] 'whitespace-cleanup)
 (define-key f2-map [?y] 'browse-kill-ring)
+(define-key f2-map [?.] 'org-time-stamp)
 
 (define-prefix-command 'f3-map)
 (define-key global-map [f3] 'f3-map)
@@ -222,4 +224,8 @@
 ;;Iswitchb
 (load "my-iswitchb.elc")
 (iswitchb-mode)
-
+;replaecment for package-desc-vers
+;(funcall (if (fboundp 'package-desc-version)
+;             'package--ac-desc-version
+;           'package-desc-vers)
+;         (cdr package)) 

@@ -59,7 +59,7 @@ function is called with arguments args, interactive spec is always nil"
 (defun replace-regexp-lisp (from-string to-string &optional bound)
 "lisp code emulating the behavior of replace-regexp, but without
 altering the mark or printing anything."
-  (while (re-search-forward from-string bound nil)
+  (while (re-search-forward from-string bound t)
     (replace-match to-string nil nil)))
 (defun princ-line (val)
   (insert "\n")
