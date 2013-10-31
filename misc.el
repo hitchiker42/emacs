@@ -64,3 +64,16 @@ altering the mark or printing anything."
 (defun princ-line (val)
   (insert "\n")
   (princ val (current-buffer)))
+(defun display-buffer-temporarily
+  (buffer-or-name &optional action frame time kill)
+  (let ((display-window
+         (display-buffer buffer-or-name action frame)))
+    (if (not time)
+        (setq time 5))
+    (if kill
+        (run-with-timer time nil #'kill-buffer buffer-or-name)
+      (run-with-timer time nil #'switch-to-prev-buffer display-window))))
+(defun display-buffer-temporarily-and-kill
+  (buffer-or-name &optional action frame time)
+  (funcall #'display-buffer-temporarily
+           buffer-or-name action frame time t))
