@@ -69,9 +69,12 @@ altering the mark or printing anything."
   (let ((display-window
          (display-buffer buffer-or-name action frame)))
     (if (not time)
-        (setq time 5))
+        (setq time 3))
     (if kill
-        (run-with-timer time nil #'kill-buffer buffer-or-name)
+        (run-with-timer time nil 
+                        (lambda (buf win) 
+                          (progn (kill-buffer buf)(delete-window win)))
+                        buffer-or-name display-window)
       (run-with-timer time nil #'switch-to-prev-buffer display-window))))
 (defun display-buffer-temporarily-and-kill
   (buffer-or-name &optional action frame time)
