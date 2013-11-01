@@ -69,7 +69,7 @@ altering the mark or printing anything."
   (let ((display-window
          (display-buffer buffer-or-name action frame)))
     (if (not time)
-        (setq time 3))
+        (setq time 2.5))
     (if kill
         (run-with-timer time nil 
                         (lambda (buf win) 
@@ -78,5 +78,9 @@ altering the mark or printing anything."
       (run-with-timer time nil #'switch-to-prev-buffer display-window))))
 (defun display-buffer-temporarily-and-kill
   (buffer-or-name &optional action frame time)
+  (let* ((split-height-threshold 20) 
+         (split-width-threshold nil)
+         (display-buffer-overriding-action
+         '(display-buffer-pop-up-window )))
   (funcall #'display-buffer-temporarily
-           buffer-or-name action frame time t))
+           buffer-or-name display-buffer-overriding-action frame time t)))
