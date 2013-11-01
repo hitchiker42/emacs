@@ -78,9 +78,46 @@ altering the mark or printing anything."
       (run-with-timer time nil #'switch-to-prev-buffer display-window))))
 (defun display-buffer-temporarily-and-kill
   (buffer-or-name &optional action frame time)
-  (let* ((split-height-threshold 20) 
+  (let* ((split-height-threshold nil) 
          (split-width-threshold nil)
          (display-buffer-overriding-action
          '(display-buffer-pop-up-window )))
   (funcall #'display-buffer-temporarily
            buffer-or-name display-buffer-overriding-action frame time t)))
+;;needs some work, but its almost there
+;; (defvar thing-at-point-function-argument-chars "-[:alnum:]!?$%^&*\<>._="
+;;   "characters allowed in a function argument, specifically a lisp argument")
+;; (defvar whitespace-allowed-in-function-argument nil) ;
+;; (intern "function-argument")
+
+;; (defun end-of-function-argument ()
+;;   (let ((function-argument-chars 
+;;          (concat thing-at-point-function-argument-chars
+;;                  (if whitespace-allowed-in-function-argument
+;;                      " \t\n"
+;;                    ""))))
+;;     (re-search-forward (concat "\\=[" function-argument-chars "]*")
+;;                        nil t)))
+;; (defun beginning-of-function-argument ()
+;;   (let ((function-argument-chars 
+;;          (concat thing-at-point-function-argument-chars
+;;                  (if whitespace-allowed-in-function-argument
+;;                      " \t\n"
+;;                    ""))))
+;;     (re-search-backward (concat "\\=[" function-argument-chars "]*")
+;;                         nil t)))
+;; (defun forward-function-argument (x)       
+;;        (if (< x 0) 
+;;            (beginning-of-function-argument)
+;;          (end-of-function-argument)))
+;; (put 'function-argument 'end-op #'end-of-function-argument)
+;; (put 'function-argument 'beginning-op #'beginning-of-function-argument)
+;; (put 'function-argument 'forward-op #'forward-function-argument)
+;; (defun transpose-function-arguments (arg &optional whitespace-allowed)
+;;   (let ((whitespace-allowed-in-function-argument
+;;          (if whitespace-allowed
+;;              t
+;;            nil)))
+;;     (transpose-subr 'forward-function-argument arg)))
+           
+;; ;presumably this is how the default argument bit of the cl package works
