@@ -118,6 +118,7 @@ altering the mark or printing anything."
 ;;          (if whitespace-allowed
 ;;              t
 ;;            nil)))
-;;     (transpose-subr 'forward-function-argument arg)))
-           
-;; ;presumably this is how the default argument bit of the cl package works
+;;     (transpose-subr 'forward-function-argument arg)))           
+(defun sort-words (start end &optional reverse)
+  (interactive "r\nP")
+  (sort-regexp-fields reverse "\\(\\w+\\)" "\\1" start end))
