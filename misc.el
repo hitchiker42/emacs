@@ -122,3 +122,33 @@ altering the mark or printing anything."
 (defun sort-words (start end &optional reverse)
   (interactive "r\nP")
   (sort-regexp-fields reverse "\\(\\w+\\)" "\\1" start end))
+;;move a buffer between windows
+;;essentially swap two buffers between windows determined by direction
+(lexical-let
+    ((my-windmove-window-select 
+      (lambda (dir &optional arg window)
+        (let ((other-window (windmove-find-other-window dir arg window)))
+          (cond ((null other-window)
+                 (error "No window %s from selected window" dir))
+                ((window-minibuffer-p other-window)
+                 (error 
+                  "Window %s from selected window is a Minibuffer window"))
+                (t
+                 (select-window other-window)))))))
+  (defun windswap (dir)
+    (let* 
+        ((old-window (selected-window))
+         (new-window (funcall my-windmove-window-select dir nil old-window))
+         (old-buffer (window-buffer old-window))
+         (new-buffer (window-buffer new-window)))
+      (set-window-buffer old-window new-buffer)
+      (set-window-buffer new-window old-buffer)
+      (select-window new-window))))
+(defun windswap-up () (interactive) (windswap 'up))
+(defun windswap-down () (interactive) (windswap 'down))
+(defun windswap-left () (interactive) (windswap 'left))
+(defun windswap-right () (interactive) (windswap 'right))
+;; (define-key global-map [?\M-P] 'windswap-up)
+;; (define-key global-map [?\M-N] 'windswap-down)
+;; (define-key global-map [?\M-B] 'windswap-left)
+;; (define-key global-map [?\M-F] 'windswap-right)
