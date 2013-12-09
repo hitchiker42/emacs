@@ -152,3 +152,28 @@ altering the mark or printing anything."
 ;; (define-key global-map [?\M-N] 'windswap-down)
 ;; (define-key global-map [?\M-B] 'windswap-left)
 ;; (define-key global-map [?\M-F] 'windswap-right)
+;; not sure exactily where to put this all, but this should
+;; make eshell's history work normally
+;; but eshell seems hell bent on having a circular history so this
+;; still needs some work
+;; Ok I think I need to just rewrite the history module
+(defun my-eshell-previous-input (arg)
+  (interactive "*p")
+  (if (> 0 arg)
+      (my-eshell-next-input (abs arg))
+    (if (>= 0 
+            (- (mod (1- eshell-history-index)
+                    (ring-length eshell-history-ring)) arg))
+        (progn 
+          (delete-region eshell-last-output-end (point))
+          (insert-and-inherit (ring-ref eshell-history-ring 0)))
+      (eshell-previous-input arg))))
+(defun my-eshell-next-input (arg)
+  (interactive "*p")
+  (if (> 0 arg)
+      (my-eshell-previous-input (abs arg))
+    (if (<= (ring-length eshell-history-ring)
+            (+ (mod (1- eshell-history-index)
+                    (ring-length eshell-history-ring)) arg))
+        (delete-region eshell-last-output-end (point))
+      (eshell-next-input arg))))
