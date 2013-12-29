@@ -118,7 +118,7 @@ altering the mark or printing anything."
 ;;          (if whitespace-allowed
 ;;              t
 ;;            nil)))
-;;     (transpose-subr 'forward-function-argument arg)))           
+;;     (transpose-subr 'forward-function-argument arg)))
 (defun sort-words (start end &optional reverse)
   (interactive "r\nP")
   (sort-regexp-fields reverse "\\(\\w+\\)" "\\1" start end))
@@ -132,7 +132,7 @@ altering the mark or printing anything."
                  (error "No window %s from selected window" dir))
                 ((window-minibuffer-p other-window)
                  (error 
-                  "Window %s from selected window is a Minibuffer window"))
+                  "Window %s from selected window is a Minibuffer window" dir))
                 (t
                  (select-window other-window)))))))
   (defun windswap (dir)
@@ -177,3 +177,29 @@ altering the mark or printing anything."
                     (ring-length eshell-history-ring)) arg))
         (delete-region eshell-last-output-end (point))
       (eshell-next-input arg))))
+(defmacro if-graphical (&rest exprs)
+  `(if (display-graphic-p)
+       (progn ,@exprs)))
+(defmacro if-terminal (&rest exprs)
+  `(if (not (display-graphic-p))
+       (progn ,@exprs)))
+(defalias 'if-display-graphic-p 'if-graphical)
+(defun fontify-frame (frame font)
+  (interactive "i\ns")
+  (set-frame-parameter frame 'font font))
+(defun fontify-frame-default (frame)
+  (interactive "i")
+  (if-graphical
+      (fontify-frame frame default-font)))
+(defun fontify-frame-default-11 (frame)
+  (interactive "i")
+  (if-graphical
+      (fontify-frame frame default-font-11)))
+(defun resize-frame (frame height width)
+  (set-frame-parameter frame 'height height)
+  (set-frame-parameter frame 'width width))
+(defun resize-frame-default (frame)
+  (interactive "i")
+  (if-graphical
+   (resize-frame frame (cdr default-frame-size) (car default-frame-size))))
+(provide 'tucker-misc)
