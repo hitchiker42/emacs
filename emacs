@@ -229,3 +229,10 @@
 ;             'package--ac-desc-version
 ;           'package-desc-vers)
 ;         (cdr package)) 
+(setq auto-insert-alist
+ '((("SciLisp/src/.+\\.\\([hc]\\)\\'" . "SciLisp C File") .
+    (lambda ()
+      (insert (SciLisp-copyright (file-name-nondirectory buffer-file-name)))))
+   (("\\.\\(sh\\|bash\\)\\'" . "Shell Script") .
+    (lambda ()
+      (insert (format "#!/bin/bash"))))))
