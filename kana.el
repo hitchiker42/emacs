@@ -1,7 +1,9 @@
+#!/usr/bin/emacs --script 
 ;; -*- lexical-binding: t; -*-
 (require 'cl)
 (defvar kana-table (make-hash-table :test #'equal))
 (setq kana-array (make-vector 142 ""))
+(eval `(or ,@(mapcar (lambda (x) `(equal ,x "-scriptload")) '("emacs" "-scriptload" "kana.el"))))
 (defvar kana-consonants '("" "k" "s" "t" "n" "h" "m" "y" "r" "w"))
 (defvar kana-consonants-arr ["" "k" "s" "t" "n" "h" "m" "y" "r" "w"])
 (defvar kana-dakuten '("" "g" "z" "d" "" "b" "" "" "" ""))
@@ -18,6 +20,9 @@
                            (list (cons "わ" "wa") (cons "ワ" "wa"))
                            (list (cons "ヲ" "wo") (cons "を" "wo"))
                            (list (cons "ん" "n") (cons "ン" "n"))))
+(defvar script? 
+  (eval `(or ,@(mapcar (lambda (x) `(equal ,x "-scriptload"))
+                       command-line-args))))
 (defun 2+ (x) (1+ (1+ x)));I wonder if this is faster than (+ 2 x)...
 (defmacro kana-roman (j k)  `(concat (aref kana-consonants-arr ,j)
                                      (aref kana-vowels-arr ,k)))
@@ -104,37 +109,38 @@
 (defun kana-test-simple ()
   (populate-kana-table)
   (random t)
-  (setq batch-mode
-        (if (null (current-buffer)) t nil))
+  (setq batch-mode (or (null (current-buffer)) script?))
   (let ((current-kana "")
         (current-answer "")
         (current-guess "")
         (current-guess-number 0)
         (*output* (if batch-mode t (current-buffer)))
-        (*read-fun* (if batch-mode
-                        (progn (princ "Guess: ") (symbol-name (read)))
-                      (lambda () (read-from-minibuffer "Guess:")))))
-    (while t
-      (setq current-kana (aref kana-array (random 142)))
-      (setq current-answer (gethash current-kana kana-table))
-      (setq current-guess-number 0)
-      (princ (format "What is the meaning of %s\n" current-kana) *output*)
-                                        ;massive hack to get this to at least work in emacs itself
-      (princ
-       (catch 'guess
-         (while t
-           (setq current-guess (funcall *read-fun*))
-           (if (equal current-guess current-answer)
-               (throw 'guess "Correct!\n")
-             (incf current-guess-number)
-             (if (or (>= current-guess-number 3) (equal current-guess ""))
-                 (throw 'guess (format "the answer was %s\n" current-answer)))
-             (princ "Incorrect, guess again.\n")))) *output* ))))
+        (*read-fun* (lambda () (read-from-minibuffer "Guess:"))))
+    (unwind-protect
+        (while t
+          (setq current-kana (aref kana-array (random 142)))
+          (setq current-answer (gethash current-kana kana-table))
+          (setq current-guess-number 0)
+          (princ (format "What is the meaning of %s\n" current-kana) *output*)
+          (princ
+           (catch 'guess
+             (while t
+               (setq current-guess (funcall *read-fun*))
+               (if (equal current-guess current-answer)
+                   (throw 'guess "Correct!\n")
+                 (incf current-guess-number)
+                 (if (or (>= current-guess-number 3) (equal current-guess ""))
+                     (throw 'guess (format "the answer was %s\n" 
+                                           current-answer)))
+                 (princ "Incorrect, guess again.\n")))) *output* ))
+      (when script? (terpri) (kill-emacs)))))
 (defun kana-test-emacs ()
   (with-temp-buffer
     (switch-to-buffer (current-buffer))
     (kana-test-simple)))
-(kana-test-emacs)
+(when 
+    script?
+  (kana-test-emacs))
 ;; (#x3041 . "ぁ")(#x3042 . "あ") (#x30a1 . "ァ")(#x30a2 . "ア")
 ;; (#x3043 . "ぃ")(#x3044 . "い") (#x30a3 . "ィ")(#x30a4 . "イ")
 ;; (#x3045 . "ぅ")(#x3046 . "う") (#x30a5 . "ゥ")(#x30a6 . "ウ")
