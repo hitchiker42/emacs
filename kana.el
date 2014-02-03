@@ -1,9 +1,9 @@
-#!/usr/bin/emacs --script 
+#!/usr/bin/emacs --script
 ;; -*- lexical-binding: t; -*-
 (require 'cl)
+(defconst +table-size+ 142)
 (defvar kana-table (make-hash-table :test #'equal))
-(setq kana-array (make-vector 142 ""))
-(eval `(or ,@(mapcar (lambda (x) `(equal ,x "-scriptload")) '("emacs" "-scriptload" "kana.el"))))
+(defvar kana-array (make-vector +table-size+ ""))
 (defvar kana-consonants '("" "k" "s" "t" "n" "h" "m" "y" "r" "w"))
 (defvar kana-consonants-arr ["" "k" "s" "t" "n" "h" "m" "y" "r" "w"])
 (defvar kana-dakuten '("" "g" "z" "d" "" "b" "" "" "" ""))
@@ -20,10 +20,20 @@
                            (list (cons "わ" "wa") (cons "ワ" "wa"))
                            (list (cons "ヲ" "wo") (cons "を" "wo"))
                            (list (cons "ん" "n") (cons "ン" "n"))))
-(defvar script? 
+(defvar script?
   (eval `(or ,@(mapcar (lambda (x) `(equal ,x "-scriptload"))
                        command-line-args))))
+(defvar current-dir-name
+  (if load-in-progress
+      (file-name-directory load-file-name)
+    (file-name-directory default-directory)))
 (defun 2+ (x) (1+ (1+ x)));I wonder if this is faster than (+ 2 x)...
+;;think of these next several macros 
+;;as static inline functions used in populate kana-table
+
+;;Most of this next stuff is fairly confusing but
+;;it's either this or building things literally
+;;by just inserting all the actual kana/romanji pairs into the code
 (defmacro kana-roman (j k)  `(concat (aref kana-consonants-arr ,j)
                                      (aref kana-vowels-arr ,k)))
 (defmacro kana-roman-2 (j k) `(concat (aref kana-dakuten-arr ,j)
@@ -83,6 +93,18 @@
      (aset kana-array (incf l) (char-to-string (2+ (+ #x60 i))))
      (puthash (char-to-string (2+ (+ i #x60))) (kana-roman-3 j k) kana-table)
      (incf i 3)))
+;write anoter funciton to read the vactor 
+(defun read-kana-table ()
+  (if (not (file-exists-p (concat current-dir-name "kana_table")))
+      nil
+    (with-temp-buffer
+      (insert-file-contents (concat current-dir-name "kana_table"))
+      (let ((table-test (read (current-buffer))))
+        (if (and (hash-table-p table-test)
+                 (equal "to" (gethash "ト" table-test)))
+            (setq kana-table table-test)
+          t
+          nil)))))
 (defun populate-kana-table ()
   (let ((i #x3042) (j 0) (l -1))
     (while (< i #x308d)
@@ -106,19 +128,40 @@
             codepoint
           0))
       (error 0)))
+(defun random-with-exclusions (limit exclude)
+  (let ((current (random limit)))
+    (catch 'repeat;i.e REPEAT:
+      (dolist (val exclude)
+        (when (eq val current)
+          (setq current (random limit))
+          (throw 'repeat))));i.e goto REPEAT
+    current))
+  ;; no tail call recursion in emacs, so don't use this
+  ;; (cl-labels ((f (current vals)
+  ;;                (if (null vals) current
+  ;;                  (if (eq current (car vals))
+  ;;                      (f (random limit) exclude)
+  ;;                    (f current (cdr vals))))))
+  ;;   (f (random limit) exclude)))
 (defun kana-test-simple ()
   (populate-kana-table)
   (random t)
   (setq batch-mode (or (null (current-buffer)) script?))
-  (let ((current-kana "")
+  (let* ((current-kana "")
         (current-answer "")
         (current-guess "")
         (current-guess-number 0)
+        (current-index 0)
+        (excluded-indices (list -1 -1 -1))
         (*output* (if batch-mode t (current-buffer)))
         (*read-fun* (lambda () (read-from-minibuffer "Guess:"))))
     (unwind-protect
         (while t
-          (setq current-kana (aref kana-array (random 142)))
+          (setq current-index 
+                (random-with-exclusions +table-size+ excluded-indices))
+          (setq excluded-indices 
+                (cons current-index (butlast excluded-indices)))
+          (setq current-kana (aref kana-array current-index))
           (setq current-answer (gethash current-kana kana-table))
           (setq current-guess-number 0)
           (princ (format "What is the meaning of %s\n" current-kana) *output*)
@@ -130,7 +173,7 @@
                    (throw 'guess "Correct!\n")
                  (incf current-guess-number)
                  (if (or (>= current-guess-number 3) (equal current-guess ""))
-                     (throw 'guess (format "the answer was %s\n" 
+                     (throw 'guess (format "the answer was %s\n"
                                            current-answer)))
                  (princ "Incorrect, guess again.\n")))) *output* ))
       (when script? (terpri) (kill-emacs)))))
@@ -138,7 +181,7 @@
   (with-temp-buffer
     (switch-to-buffer (current-buffer))
     (kana-test-simple)))
-(when 
+(when
     script?
   (kana-test-emacs))
 ;; (#x3041 . "ぁ")(#x3042 . "あ") (#x30a1 . "ァ")(#x30a2 . "ア")
