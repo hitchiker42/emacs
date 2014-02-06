@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (defun indent-buffer ()
   "Indent entire buffer using indent-region"
   (interactive)
@@ -124,7 +126,7 @@ altering the mark or printing anything."
   (sort-regexp-fields reverse "\\([[:word:][:punct:]]+\\)" "\\1" start end))
 ;;move a buffer between windows
 ;;essentially swap two buffers between windows determined by direction
-(lexical-let
+(let
     ((my-windmove-window-select 
       (lambda (dir &optional arg window)
         (let ((other-window (windmove-find-other-window dir arg window)))
@@ -148,6 +150,7 @@ altering the mark or printing anything."
 (defun windswap-down () (interactive) (windswap 'down))
 (defun windswap-left () (interactive) (windswap 'left))
 (defun windswap-right () (interactive) (windswap 'right))
+
 ;; (define-key global-map [?\M-P] 'windswap-up)
 ;; (define-key global-map [?\M-N] 'windswap-down)
 ;; (define-key global-map [?\M-B] 'windswap-left)
@@ -223,4 +226,22 @@ altering the mark or printing anything."
    You should have received a copy of the GNU General Public License
    along with SciLisp.  If not, see <http://www.gnu.org*/
 " (if (null description) filename description)))
+(defun split-window-quarters (&optional place buffer1 buffer2 buffer3)
+  "split the current window into quarters, optionally specifiy in what window
+to leave as the current window, one of :upper-left :upper-right :lower-left or 
+:lower-right, the default is upper-right"
+  (interactive)
+  (let ((initial-buf (current-buffer )))
+    (split-window nil nil t);split horosontaly
+    (split-window)
+    (other-window 2)
+    (split-window)
+    (pcase place
+      (:upper-left (other-window 2))
+      (:lower-right (other-window 3))
+      (:lower-left (other-window 1)))
+    (switch-to-buffer initial-buf)))
+    
+        
+    
 (provide 'tucker-misc)
