@@ -243,5 +243,31 @@ to leave as the current window, one of :upper-left :upper-right :lower-left or
     (switch-to-buffer initial-buf)))
     
         
-    
+(define-generic-mode 'ebnf-mode
+  '(("(*" . "*)"))
+  '("=" "::=")
+  '(("^[^ \t\n][^=]+" . font-lock-variable-name-face)
+    ("#?['\"].*?['\"]" . font-lock-string-face)
+    ("\\?.*\\?" . font-lock-negation-char-face)
+    ("\\[\\|\\]\\|{\\|}\\|(\\|)\\||\\|,\\|;" . font-lock-type-face)
+    ("[^ \t\n]" . font-lock-function-name-face))
+  '("\\.ebnf\\'")
+  `(,(lambda () (setq mode-name "EBNF")))
+  "Major mode for EBNF metasyntax text highlighting.")
+
+(defun zap-up-to-char (arg char)
+  "Kill up to, but not including ARGth occurrence of CHAR.
+Case is ignored if `case-fold-search' is non-nil in the current buffer.
+Goes backward if ARG is negative; error if CHAR not found.
+Ignores CHAR at point."
+  (interactive "p\ncZap up to char: ")
+  (let ((direction (if (>= arg 0) 1 -1)))
+    (kill-region (point)
+		 (progn
+		   (forward-char direction)
+		   (unwind-protect
+		       (search-forward (char-to-string char) nil nil arg)
+		     (backward-char direction))
+		   (point)))))
+
 (provide 'tucker-misc)

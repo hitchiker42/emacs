@@ -236,3 +236,22 @@
    (("\\.\\(sh\\|bash\\)\\'" . "Shell Script") .
     (lambda ()
       (insert (format "#!/bin/bash"))))))
+(defadvice glasses-mode (before mode-specific-glasses
+                                (&optional arg sep) activate compile)
+  (unless (or
+           (and (or (null arg)
+                    (eq arg 'toggle))
+                glasses-mode)
+           (and (numberp arg) (> 0 arg)))
+    (setq sep
+          (if (null sep)
+              (if (string-match "lisp\\|clojure\\|scheme" (symbol-name major-mode))
+                  "-"
+                "_")
+            sep))
+    (make-local-variable 'glasses-separator)
+    (setq glasses-separator sep)
+    (make-local-variable 'glasses-original-separator)
+    (setq glasses-original-separator sep)
+    (glasses-set-overlay-properties)))
+          
