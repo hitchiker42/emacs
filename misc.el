@@ -269,5 +269,16 @@ Ignores CHAR at point."
 		       (search-forward (char-to-string char) nil nil arg)
 		     (backward-char direction))
 		   (point)))))
-
+(defun string-join (sep &rest strings)
+  "concatenate strings inserting sep between each string so
+(string-join \"-\" \"foo\" \"bar\" \"baz\") returns \"foo-bar-baz\""
+  (mapconcat 'identity strings sep))
+(defun matches-regex-p (regexp string)
+  "return t if the entirety of string is matched by regexp otherwise return nil.
+doesn't modify the match data"
+  (save-match-data 
+    (if (zerop (string-match regexp string))
+        (if (eq (length string) (match-end 0))
+            t)
+      nil)))
 (provide 'tucker-misc)
