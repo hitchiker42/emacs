@@ -75,15 +75,6 @@
     (define-key map "\C-j"	'newline)
     (define-key map "\C-m"	'newline)
     (define-key map [menu-bar asm-mode] (cons "Asm" (make-sparse-keymap)))
-    (define-key map [menu-bar asm-mode comment-region]
-      '(menu-item "Comment Region" comment-region
-		  :help "Comment or uncomment each line in the region"))
-    (define-key map [menu-bar asm-mode newline-and-indent]
-      '(menu-item "Insert Newline and Indent" newline-and-indent
-		  :help "Insert a newline, then indent according to major mode"))
-    (define-key map [menu-bar asm-mode asm-colon]
-      '(menu-item "Insert Colon" asm-colon
-		  :help "Insert a colon; if it follows a label, delete the label's indentation"))
     map)
   "Keymap for Asm mode.")
 (defvar numeric-literal
@@ -134,7 +125,7 @@ Special commands:
   (set (make-local-variable 'indent-line-function) 'asm-indent-line)
   ;; Stay closer to the old TAB behavior (was tab-to-tab-stop).
   (set (make-local-variable 'tab-always-indent) nil)
-
+  (electric-indent-mode -1)
   ;; Make our own local child of asm-mode-map
   ;; so we can define our own comment character.
   (use-local-map (nconc (make-sparse-keymap) asm-mode-map))
