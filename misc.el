@@ -281,4 +281,40 @@ doesn't modify the match data"
         (if (eq (length string) (match-end 0))
             t)
       nil)))
+;;if this proves useful I should add options for dealing with case
+(defun un-camel-case (&optional string)
+  "change camel case words into words seperated by underscores,
+so that unCamelCase becomes un_camel_case"
+  ;;Also multiple consuctive caps don't get downcased
+  ;;(i.e unCAMELCase->un_CAMEL_case)
+  (interactive "i")
+  (if (null string)
+      (save-excursion
+        ;;move point to the begining of the next/current word
+        (cond
+         ((looking-at-p "\\<[a-zA-Z]") t)
+         ((looking-at-p "\\>\\|[a-zA-Z]") (backward-word))
+         ((looking-at-p " ") (forward-whitespace 1)))
+        (let ((bound (prog2 (forward-word) (point) (backward-word)))
+              (case-fold-search nil))
+          (while (re-search-forward
+                  "[a-z]\\([A-Z]\\)\\(?:\\([A-Z]+\\)\\|[a-z]\\)" bound t)
+            (goto-char (match-beginning 1))
+            (insert "_")
+            (if (match-string 2)
+                (progn
+                  (goto-char (match-end 2))
+                  (insert "_")))
+              (insert (downcase (char-after)))
+              (delete-char 1)))
+        nil)))
+;; (define-erc-module ring nil
+;;   "Stores input in a ring so that previous commands and messages can
+;; be recalled using M-p and M-n."
+;;   ((add-hook 'erc-send-pre-hook 'erc-add-to-input-ring)
+;;    (define-key erc-mode-map [(C-up)] 'erc-previous-command)
+;;    (define-key erc-mode-map [(C-down)] 'erc-next-command))
+;;   ((remove-hook 'erc-send-pre-hook 'erc-add-to-input-ring)
+;;    (define-key erc-mode-map [(C-up)] 'undefined)
+;;    (define-key erc-mode-map [(C-down)] 'undefined)))
 (provide 'tucker-misc)

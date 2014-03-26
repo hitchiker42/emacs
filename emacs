@@ -78,6 +78,12 @@
 ;;reverting buffers is useful, changing coding systems not so much
 (define-key ctl-x-map '[?\r ?r] 'revert-buffer)
 (define-key ctl-x-map '[?\C-b] 'ibuffer)
+
+(define-prefix-command 'nested-help-map)
+(define-key help-map [?h] 'nested-help-map)
+(define-key nested-help-map [?r]
+  (lambda () (interactive) (info "(elisp) Syntax of Regexps")))
+(define-key nested-help-map [?h] 'view-hello-file)
 ;;prefix keys ESC(esc-map),C-h(help-map),C-c(mode-specific-map)
 ;;C-x(ctl-x-map),C-x RET(mule-keymap),C-x 4/5(ctl-4-map,ctl-5-map)
 ;;C-x 6 (2C-mode-map),C-x v(vc-prefix-map),M-g(goto-map),M-s(search-map)
