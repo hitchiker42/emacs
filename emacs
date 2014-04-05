@@ -1,17 +1,30 @@
 ;;-*-emacs-lisp-*-
 ;;;My emacs lisp init file, Everything execept for custom set vars/faces
-(add-to-list 'load-path "/home/tucker/.emacs.d")
-(add-to-list 'load-path "/home/tucker/.emacs.d/my-elisp")
-(setq custom-file "/home/tucker/.emacs.d/custom.elc")
-(load custom-file)
+(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/my-elisp"))
+(setq custom-file (expand-file-name "~/.emacs.d/custom.elc"))
+(setq init-file (expand-file-name "~/.emacs.d/init.elc"))
+(if (file-readable-p init-file)
+    (load init-file))
 (load "misc.elc")
+(load custom-file)
 (package-initialize ())
-(setq inferior-lisp-program "/home/tucker/usr/bin/sbcl")
-(load "/home/tucker/quicklisp/slime-helper.el")
+;;bit of an odd hack, sbcl reads the SBCL_HOME environment variable
+;;to determine the core to load, this script just sets that variable
+;;to ${HOME}/usr/lib/sbcl and executes ${HOME}/usr/bin/sbcl
+(setq inferior-lisp-program (expand-file-name "~/.sbcl.sh"))
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;define a couple global constants
+(defconst default-font "Dejavu Sans Mono 10")
+(defconst default-font-11 "Dejavu Sans Mono 11")
+(defconst default-frame-size '(85 . 42))
+;define a couple aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'elisp-mode 'emacs-lisp-mode)
 (defalias 'eshell-new 'multi-eshell)
 (defalias 'perl-mode 'cperl-mode)
+(defalias 'bash-mode 'sh-mode)
+(defalias 'nilp 'null)
 ;;require packages
 (dolist (package 
 '(auto-complete rainbow-delimiters w3m-autoloads wind-swap
@@ -19,13 +32,20 @@
   (require package))
 (global-rainbow-delimiters-mode)
 (global-auto-complete-mode)
+(global-subword-mode)
 (icicle-mode)
 (column-number-mode)
+;set some global bindings and parameters
 (windmove-default-keybindings)
 (toggle-diredp-find-file-reuse-dir 1)
 (menu-bar-showhide-tool-bar-menu-customize-disable)
 (menu-bar-no-scroll-bar)
-(setq-default indent-tabs-mode nil)
+(setq-default
+ indent-tabs-mode nil
+ c-basic-offset 2
+ c-default-style '((awk-mode . "awk") (other . "gnu"))
+ c-offsets-alist '((case-label . +)(arglist-cont . +)(arglist-intro . +)))
+;;set variables
 (setq
  ;;not sure if this works
  multi-eshell-shell-function '(eshell)
@@ -33,7 +53,9 @@
  org-replace-disputed-keys t
  x-select-enable-clipboard t
  x-select-enable-primary t
- confirm-kill-emacs #'y-or-n-p 
+ vc-handled-backends nil
+ confirm-kill-emacs #'y-or-n-p
+; setq asm-mode-hook '(lambda () (electric-indent-mode -1))
  emacs-lisp-mode-hook '(turn-on-eldoc-mode enable-auto-async-byte-compile-mode)
  ;;This regexp should ignore all backup Files
  auto-async-byte-compile-exclude-files-regexp ".*~$\|^#.*#$"
@@ -43,6 +65,11 @@
  iswitchb-default-method 'maybe-frame
  iconify-or-deiconify-frame nil
  auto-window-vscroll nil)
+;resize frame and set default font
+(fontify-frame-default nil)
+(resize-frame-default nil)
+(add-to-list 'after-make-frame-functions 'resize-frame-default t)
+(add-to-list 'after-make-frame-functions 'fontify-frame-default t)
 ;;;Automode stuff
 (cl-flet ((temp (x) (add-to-list 'auto-mode-alist x)))
   (mapcar #'temp '(("\\.fun\\'" . sml-mode)
@@ -62,10 +89,27 @@
 (define-key global-map [?\C-\M-s] 'isearch-forward)
 (define-key global-map [?\C-\M-r] 'isearch-backward)
 (define-key global-map [?\C-c ?\C-r ?s]  'replace-string)
+(define-key global-map [?\M-z] 'zap-up-to-char)
+;;A couple convient shortcuts
 (define-key global-map [?\C-x ?\C-g] 'keyboard-quit)
+(define-key help-map [?\C-f] 'describe-function)
+(define-key help-map [?\C-e] (lambda () (interactive) (info "elisp")))
+(define-key ctl-x-map [?\C-n] 'next-line)
+(define-key global-map [?\C-z] elscreen-map)
+;;(define-key asm-mode-map [?\C-j] 'newline)
+;;(define-key asm-mode-map [?\C-m] 'newline)
 ;(define-key global-map "\M-/" 'hippie-expand)
 (define-key global-map '[C-tab] 'hippie-expand)
 (define-key global-map [?\C-c ?u] 'insert-char)
+;;Window movment commands
+(define-key global-map [?\C-\S-p] 'windmove-up)
+(define-key global-map [?\C-\S-n] 'windmove-down)
+(define-key global-map [?\C-\S-f] 'windmove-right)
+(define-key global-map [?\C-\S-b] 'windmove-left)
+(define-key global-map [?\M-P] 'windswap-up)
+(define-key global-map [?\M-N] 'windswap-down)
+(define-key global-map [?\M-B] 'windswap-left)
+(define-key global-map [?\M-F] 'windswap-right)
 ;;eval map, not sure why I could never get this to work before
 (define-prefix-command 'eval-map)
 (define-key global-map [?\C-c ?e] 'eval-map)
@@ -78,6 +122,17 @@
 ;;reverting buffers is useful, changing coding systems not so much
 (define-key ctl-x-map '[?\r ?r] 'revert-buffer)
 (define-key ctl-x-map '[?\C-b] 'ibuffer)
+;;because I don't thing I've ever wanted to set the fill column
+(define-key ctl-x-map '[?f] 'find-file)
+(define-prefix-command 'japanese-input)
+(define-key mule-keymap [?j] 'japanese-input)
+(cl-flet ((set-katakana () (interactive) (set-input-method 'japanese-katakana))
+          (set-hiragana () (interactive) (set-input-method 'japanese-hiragana))
+          (deactivate-input-method () (interactive) (deactivate-input-method)))
+  (define-key mule-keymap [?e] #'deactivate-input-method)
+  (define-key mule-keymap [?d] #'deactivate-input-method)
+  (define-key japanese-input [?k] #'set-katakana)
+  (define-key japanese-input [?h] #'set-hiragana))
 
 (define-prefix-command 'nested-help-map)
 (define-key help-map [?h] 'nested-help-map)
@@ -147,8 +202,17 @@
 (define-prefix-command 'f3-map)
 (define-key global-map [f3] 'f3-map)
 (define-key global-map [?\M-n] 'f3-map)
+(define-key f3-map [? ] 'just-one-space)
+(define-key f3-map [?1] 'fontify-frame-default-11)
+(define-key f3-map [?c] 'compile)
+(define-key f3-map [?f] 'fontify-frame-default)
+(define-key f3-map [?i] 'indent-buffer)
+(define-key f3-map [?r] 'resize-frame-default)
+(define-key f3-map [?s] 'sort-words)
 (define-key f3-map [?u] 'insert-char)
-;;overide any bindings for M-p so I can use it
+(define-key f3-map [?w] 'forward-whitespace)
+
+;;overide any bindings for M-p so I can use it in any mode
 (defvar my-keys-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 (setq my-keys-mode-map (make-keymap))
 (define-key my-keys-mode-map [?\M-p] 'f2-map)
@@ -260,4 +324,11 @@
     (make-local-variable 'glasses-original-separator)
     (setq glasses-original-separator sep)
     (glasses-set-overlay-properties)))
-          
+(setq fuel-listener-factor-binary 
+ (if (file-executable-p (expand-file-name "~/usr/bin/factor-vm"))
+     "~/usr/bin/factor-vm"
+   "/usr/bin/factor-vm"))
+(setq fuel-listener-factor-image
+ (if (file-readable-p (expand-file-name "~/usr/lib/factor.image"))
+     "~/usr/lib/factor.image"
+   "/usr/lib/factor.image"))
