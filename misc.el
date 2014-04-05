@@ -317,4 +317,34 @@ so that unCamelCase becomes un_camel_case"
 ;;   ((remove-hook 'erc-send-pre-hook 'erc-add-to-input-ring)
 ;;    (define-key erc-mode-map [(C-up)] 'undefined)
 ;;    (define-key erc-mode-map [(C-down)] 'undefined)))
+(defun update-tags (&optional directory)
+  (interactive "DTAGS directory: ")
+  (when (null directory)
+    (setq directory (file-name-directory (buffer-file-name))))
+  (apply #'async-start-process "etags" "etags"
+         (lambda (&rest args) (message "Finished updating TAGS")) "-R"
+         (directory-files directory t "^[^#.]+")))
+(defun find-file-upwards (file-to-find)
+  "Recursively searches each parent directory starting from the default-directory.
+looking for a file with name file-to-find.  Returns the path to it
+or nil if not found."
+  (cl-labels
+      ((find-file-r (path)
+                    (let* ((parent (file-name-directory path))
+                           (possible-file (concat parent file-to-find)))
+                      (cond
+                       ((file-exists-p possible-file) possible-file) ; Found
+                       ;; The parent of ~ is nil and the parent of / is itself.
+                       ;; Thus the terminating condition for not finding the file
+                       ;; accounts for both.
+                       ((or (null parent) (equal parent (directory-file-name parent))) nil) ; Not found
+                       (t (find-file-r (directory-file-name parent))))))) ; Continue
+    (find-file-r default-directory)))
+(defun update-tags-table ()
+  (interactive)
+  (let ((my-tags-file (find-file-upwards "TAGS")))
+    (if my-tags-file
+        (visit-tags-table my-tags-file)
+      (update-tags (file-name-directory (buffer-file-name)))
+      (visit-tags-table "TAGS"))))
 (provide 'tucker-misc)

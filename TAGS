@@ -1,0 +1,2049 @@
+
+ats-mode.el,1506
+(defvar ats-mode-syntax-table40,1146
+(defvar ats-mode-font-lock-syntax-table106,4013
+(defface ats-font-lock-static-face113,4170
+(defvar ats-font-lock-static-face 118,4378
+(defface ats-font-lock-metric-face120,4441
+(defvar ats-font-lock-metric-face 125,4636
+(defface ats-font-lock-keyword-face127,4699
+(defvar ats-font-lock-keyword-face 132,4888
+(defface ats-font-lock-c-face134,4953
+(defvar ats-font-lock-c-face 139,5134
+(defun ats-context-free-search 141,5187
+(defun ats-font-lock-mark-block 157,5683
+(defun ats-font-lock-c-code-search 162,5867
+(defun ats-font-lock-static-search 184,6879
+(defvar ats-keywords270,9435
+(defvar ats-font-lock-keywords292,10827
+(defvar ats-font-lock-syntactic-keywords306,11408
+(define-derived-mode c/ats-mode 315,11796
+(defun c/ats-mode-indent-line 324,12160
+(define-derived-mode ats-mode 341,12698
+(defun newline-and-indent-relative 382,14723
+(define-derived-mode ats-parser-mode 396,15022
+(define-derived-mode ats-lexer-mode 405,15240
+(defvar ats-default-mode 452,16959
+(defvar ats-second-modes 453,17008
+(defvar ats-two-mode-update 458,17113
+(defvar ats-two-mode-mode-idle-timer 459,17144
+(defvar ats-two-mode-bool 460,17186
+(defvar ats-two-mode-mode-delay 461,17217
+(defvar ats-two-mode-switch-hook 464,17298
+(defun ats-two-mode-mode-setup 468,17411
+(defun ats-two-mode-mode-need-update 482,17977
+(defun ats-two-mode-change-mode 485,18050
+(defun ats-two-mode-mode-update-mode 502,18637
+(define-derived-mode ats-two-mode-mode 529,19475
+
+befunge-mode.el,4015
+(defvar calc-command-flags)103,4427
+(defvar befunge-mode-map 110,4734
+(defvar befunge-mode-hook 111,4777
+(defvar befunge-interpreter-mode-map 112,4820
+(defvar befunge-interpreter-mode-hook 113,4863
+(defvar befunge-interaction-mode-map 114,4906
+(defvar befunge-interaction-mode-hook 115,4949
+(defvar befunge-stack-mode-map 116,4992
+(defvar befunge-stack-mode-hook 117,5035
+(defvar befunge-buffer 121,5125
+(defvar befunge-output 122,5189
+(defvar befunge-input 123,5260
+(defvar befunge-stack 124,5323
+(defvar befunge-stack-count 126,5383
+(defvar befunge-pc-position 127,5453
+(defvar befunge-direction 128,5502
+(defvar befunge-delay 129,5573
+(defvar befunge-field 136,5907
+(defvar befunge-x 137,5970
+(defvar befunge-y 138,6006
+(defvar befunge-number-store 140,6043
+(defvar befunge-edited 148,6425
+(defvar befunge-stack-edited 149,6501
+(defvar befunge-running 154,6668
+(defvar befunge-running-fast 155,6705
+(defvar befunge-output-line-shown 162,6961
+(defvar befunge-stack-shown 163,7001
+(defvar befunge-output-line-buffer 170,7283
+(defvar befunge-output-line-window 171,7332
+(defvar befunge-output-line-updater-handle 172,7381
+(defvar befunge-stack-buffer 174,7431
+(defvar befunge-stack-window 175,7480
+(defvar befunge-stack-updater-handle 176,7529
+(defvar befunge-hscroll-mode 181,7699
+(defun befunge-bk-highlighter 187,7855
+(defun befunge-pc-highlighter 206,8351
+(defvar befunge-mode-font-lock-keywords 225,8853
+(defvar befunge-interpreter-font-lock-keywords 233,9233
+(defface befunge-breakpoint-face243,9724
+(defface befunge-pc-face255,10100
+(defsubst befunge-kill-buffer 402,16463
+(defmacro befunge-step 405,16545
+(defmacro befunge-pop 412,16844
+(defsubst befunge-push 417,17053
+(defsubst befunge-put 421,17182
+(defsubst befunge-get 445,18032
+(defsubst befunge-print-char 460,18472
+(defun befunge-read-char 467,18712
+(defun befunge-read-number-from-stdin 498,19836
+(defsubst befunge-read-number 529,20968
+(defun befunge-make-display-table 534,21128
+(defun befunge-fit-to-buffer 552,21587
+(defun befunge-buffer-accept-edits 586,22818
+(defsubst befunge-divide 595,23176
+(defun befunge-read-div-by-zero 605,23451
+(defun befunge-mode 612,23577
+(defun befunge-interpreter-mode 655,25309
+(defun befunge-interaction-mode 679,26141
+(defun befunge-stack-mode 698,26815
+(defun befunge 717,27321
+(defun befunge-go 733,27835
+(defun befunge-run 748,28297
+(defun befunge-run-finished-p 845,32125
+(defun befunge-cleanup-after-run 938,35833
+(defun befunge-initialize 948,36221
+(defun befunge-load-source 979,37362
+(defun befunge-load-from-buffer 990,37648
+(defun befunge-alter-direction 1003,37971
+(defun befunge-toggle-buffers 1012,38303
+(defun befunge-set-delay 1039,39310
+(defun befunge-quit 1047,39543
+(defun befunge-input-file 1056,39786
+(defun befunge-buffer-edit 1068,40215
+(defun befunge-pc-shift 1075,40479
+(defun befunge-get-direction 1084,40767
+(defmacro befunge-fast-step 1094,40973
+(defsubst befunge-fast-put 1101,41222
+(defsubst befunge-fast-get 1104,41309
+(defun befunge-disguised-to-newlines 1110,41468
+(defun befunge-buffer-to-field 1123,41817
+(defun befunge-newlines-to-disguised 1142,42587
+(defun befunge-field-to-buffer 1156,42978
+(defun befunge-fast-run 1176,43642
+(defun befunge-cleanup-after-fast-run 1274,47642
+(defun befunge-output-line-display 1282,47912
+(defun befunge-output-line-updater 1304,48771
+(defun befunge-output-line-quit 1312,49079
+(defun befunge-output-line-toggle 1322,49449
+(defun befunge-stack-display 1331,49709
+(defun befunge-stack-updater 1350,50337
+(defun befunge-stack-quit 1362,50739
+(defun befunge-stack-toggle 1372,51061
+(defun befunge-stack-edit 1379,51249
+(defun befunge-stack-accept-edits 1390,51507
+(defun befunge-set-breakpoint 1413,52204
+(defun befunge-clear-breakpoint 1423,52479
+(defun befunge-clear-all-breakpoints 1429,52664
+(defun befunge-single-step 1435,52857
+(defun befunge-resume 1521,56198
+(defun befunge-show-char 1527,56349
+(defun befunge-hscroll-mode 1532,56446
+
+bg-build-mode.el,2837
+(defvar bg-build-load-time 24,745
+(defun bg-build-set-custom-and-update 26,776
+(defgroup bg-build 34,1002
+(defcustom bg-build-action-on-failure 38,1109
+(defcustom bg-build-action-on-messages 45,1351
+(defcustom bg-build-delay 53,1646
+(defcustom bg-build-key-bindings61,1919
+(defcustom bg-build-highlighting-overlay-priority 72,2387
+(defcustom bg-build-max-live-builds 77,2518
+(defface bg-build-message-sexp-face85,2752
+(defcustom bg-build-message-highlighting 92,2966
+(defcustom bg-build-notify 98,3180
+(defcustom bg-build-projects-auto-load 105,3431
+(defcustom bg-build-projects-recent 112,3650
+(defun* bg-build-prj 123,4023
+(defun bg-build-call-prj 151,4868
+(defun bg-build-prj-name 158,5116
+(defun bg-build-prj-build? 161,5189
+(defun bg-build-prj-shell 164,5290
+(defvar bg-build-projects 170,5460
+(defun bg-build-set-projects 172,5492
+(defvar bg-build-add-project-history 180,5761
+(defun bg-build-add-project 184,5867
+(defvar bg-build-finished-builds 219,7289
+(defvar bg-build-live-builds 221,7328
+(defun bg-build-interrupt-build 223,7363
+(defvar bg-build-messages 240,7988
+(defun bg-build-parse-messages 242,8020
+(defadvice next-error 258,8659
+(defadvice compile-goto-error 262,8802
+(defvar bg-build-highlighting-overlays 266,8961
+(defun bg-build-parse-message 268,9006
+(defun bg-build-delete-highlighting-overlays 288,9657
+(defun bg-build-highlight-messages 296,9931
+(defun bg-build-process-sentinel 345,12378
+(defun bg-build-kill-buffer-hook 434,16403
+(defvar bg-build-counter 443,16725
+(defun bg-build-start-build 445,16754
+(defvar bg-build-build-queue 472,17941
+(defun bg-build-check-build-queue 474,17976
+(defun bg-build-build-project 488,18474
+(defun bg-build-switch-to-messages 493,18641
+(defun bg-build-switch-to-live 508,19178
+(defun bg-build-switch-to-finished 518,19542
+(defvar bg-build-saved-files 531,20015
+(defun bg-build-files-saved-timeout 533,20050
+(defvar bg-build-timer 553,20645
+(defun bg-build-delete-timer 555,20674
+(defun bg-build-create-timer 560,20803
+(defun bg-build-after-save-hook 567,21015
+(defconst bg-build-status-buffer-name 577,21332
+(defconst bg-build-status-mode-map579,21394
+(define-derived-mode bg-build-status-mode 596,22196
+(defun bg-build-status 600,22352
+(defvar bg-build-status 611,22693
+(defun bg-build-status-update 614,22766
+(defun bg-build-status-the-project 673,25316
+(defun bg-build-status-rem-project 679,25514
+(defun bg-build-status-visit-project-file 688,25807
+(defun bg-build-status-visit-finished-build 695,26015
+(defun bg-build-status-visit-live-build 705,26399
+(defun bg-build-status-start-build 715,26784
+(defun bg-build-mode-enabled-in-some-buffer 725,27071
+(defvar bg-build-mode-map 731,27241
+(defun bg-build-build-mode-map 735,27384
+(define-minor-mode bg-build-mode746,27775
+(defun bg-build-update 770,28455
+
+bg-build-util.el,537
+(defun bg-build-cons-once 12,249
+(defun bg-build-flatmap 15,349
+(defun bg-build-remove-from-assoc 18,430
+(defun bg-build-replace-in-assoc 25,596
+(defun bg-build-assoc-cdr 29,722
+(defun bg-build-const 36,929
+(defun bg-build-kill-current-buffer 42,1081
+(defun bg-build-make-hash-table 47,1201
+(defun bg-build-point-at-current-line 51,1326
+(defun bg-build-current-line 57,1480
+(defun bg-build-time-to-double 61,1624
+(defun bg-build-attr-newer? 67,1790
+(defun bg-build-pos-to-point 75,2143
+(defun bg-build-point-to-pos 82,2350
+
+bg-job.el,409
+(defgroup bg-job 12,257
+(defcustom bg-job-period 18,495
+(defcustom bg-job-cpu-ratio 24,645
+(defun bg-job-start 33,905
+(defun bg-job-done? 55,1524
+(defun bg-job-step 58,1583
+(defun bg-job-finalize 61,1642
+(defvar bg-job-queue 64,1705
+(defvar bg-job-timer 65,1731
+(defun bg-job-timer-start 67,1758
+(defun bg-job-timer-stop 73,1929
+(defun bg-job-quantum 78,2048
+(defun bg-job-time-to-double 92,2556
+
+cdlatex.el,3321
+(defgroup cdlatex 315,14818
+(defun cdlatex-customize 322,15011
+(defun cdlatex-create-customize-menu 332,15296
+(defgroup cdlatex-keyword-commands 352,16012
+(defcustom cdlatex-command-alist 356,16135
+(defcustom cdlatex-tab-hook 379,17225
+(defgroup cdlatex-environment-support 391,17866
+(defcustom cdlatex-env-alist 395,17980
+(defcustom cdlatex-insert-auto-labels-in-env-templates 410,18617
+(defgroup cdlatex-math-support 422,19149
+(defcustom cdlatex-math-symbol-prefix 426,19265
+(defcustom cdlatex-math-symbol-direct-bindings 436,19586
+(defcustom cdlatex-math-symbol-alist 468,20772
+(defcustom cdlatex-math-modify-prefix 484,21537
+(defcustom cdlatex-modify-backwards 494,21863
+(defcustom cdlatex-math-modify-alist 501,22163
+(defgroup cdlatex-miscellaneous-configurations 528,23300
+(defcustom cdlatex-use-fonts 532,23413
+(defcustom cdlatex-paired-parens 538,23645
+(defcustom cdlatex-simplify-sub-super-scripts 547,24050
+(defcustom cdlatex-auto-help-delay 554,24347
+(defun cdlatex-show-commentary 568,24804
+(defconst cdlatex-version 574,24980
+(defvar cdlatex-mode 577,25046
+(defvar cdlatex-mode-map 581,25164
+(defvar cdlatex-mode-menu 583,25246
+(defun turn-on-cdlatex 586,25293
+(defun cdlatex-mode 591,25387
+(defun cdlatex-dollars-balanced-to-here 660,28316
+(defun cdlatex-number-of-backslashes-is-odd 673,28786
+(defun cdlatex-get-kbd-vector 687,29199
+(defun cdlatex-uniquify 695,29442
+(defun cdlatex-use-fonts 708,29876
+(defconst cdlatex-parens-pairs 719,30209
+(defun cdlatex-pbb 722,30326
+(defun cdlatex-ensure-math 735,30814
+(defun cdlatex-dollar 740,30919
+(defun cdlatex-sub-superscript 768,31995
+(defun cdlatex-lr-pair 793,33074
+(defvar cdlatex-command-alist-comb 814,33905
+(defun cdlatex-tab 816,33946
+(defun cdlatex-command-help 922,37768
+(defun cdlatex-position-cursor 948,38795
+(defvar cdlatex-env-alist-comb 961,39269
+(defun cdlatex-environment 963,39306
+(defun cdlatex-item 1020,41758
+(defun cdlatex-comment-at-point 1036,42367
+(defun cdlatex-insert-filename 1044,42635
+(defvar cdlatex-math-symbol-no-of-levels 1069,43705
+(defvar cdlatex-math-symbol-alist-comb 1070,43749
+(defvar cdlatex-math-modify-alist-comb 1071,43793
+(defvar zmacs-regions)1073,43838
+(defun cdlatex-region-active-p 1074,43861
+(defun cdlatex-math-symbol 1081,44096
+(defun cdlatex-read-char-with-help 1111,45084
+(defun cdlatex-math-modify 1155,46696
+(defun cdlatex-turn-on-help 1288,51112
+(defconst cdlatex-command-alist-default1347,52986
+(defconst cdlatex-math-modify-alist-default1462,58299
+(defconst cdlatex-math-symbol-alist-default1496,60110
+(defconst cdlatex-env-alist-default1596,63938
+(defun cdlatex-reset-mode 2018,70661
+(defun cdlatex-compute-tables 2027,71019
+(defun cdlatex-insert-math 2095,73418
+(define-key cdlatex-mode-map 2103,73645
+(define-key cdlatex-mode-map 2104,73704
+(define-key cdlatex-mode-map 2105,73760
+(define-key cdlatex-mode-map 2106,73816
+(define-key cdlatex-mode-map 2107,73872
+(define-key cdlatex-mode-map 2108,73928
+(define-key cdlatex-mode-map 2109,73984
+(define-key cdlatex-mode-map 2110,74052
+(define-key cdlatex-mode-map 2112,74121
+(define-key cdlatex-mode-map 2113,74177
+(define-key cdlatex-mode-map 2114,74242
+(define-key cdlatex-mode-map 2115,74306
+(define-key cdlatex-mode-map2117,74371
+(define-key cdlatex-mode-map2120,74478
+
+cdlatex.elc,140
+;ELCELC1,0
+;;; Compiled2,9
+;;; This file uses dynamic docstrings,6,82
+;;; This file does not contain utf-8 non-ASCII characters,8,150
+
+constants.el,965
+(defgroup constants 232,9891
+(defcustom constants-unit-system 238,10039
+(defcustom constants-rename246,10228
+(defcustom constants-user-defined 264,10912
+(defcustom constants-default-list 302,12514
+(defcustom constants-languages307,12670
+(defcustom constants-indent-code 375,15798
+(defconst constants-defaults380,15941
+(defcustom constants-allow-prefixes 645,31757
+(defcustom constants-prefixes652,32000
+(defvar constants-language-function 676,32652
+(defvar constants-major-mode)683,32953
+(defun constants-insert 688,33036
+(defun constants-get 852,40756
+(defun constants-replace 923,44129
+(defun constants-get-value 936,44637
+(defun constants-get-unit 955,45407
+(defun constants-assoc 964,45807
+(defun constants-completing-read 981,46490
+(defun constants-scroll-help 1000,47259
+(defun constants-make-completion-table 1012,47571
+(defun constants-completion-function 1032,48222
+(defun constants-help 1054,48840
+(defun constants-test 1131,52402
+
+constants.elc,140
+;ELCELC1,0
+;;; Compiled2,9
+;;; This file uses dynamic docstrings,6,82
+;;; This file does not contain utf-8 non-ASCII characters,8,150
+
+def-use-data.el,1315
+(defalias 'def-use-pos def-use-pos11,247
+(defalias 'def-use-pos-line def-use-pos-line12,287
+(defalias 'def-use-pos-col def-use-pos-col13,331
+(defun def-use-pos< 14,375
+(defalias 'def-use-ref def-use-ref19,589
+(defalias 'def-use-ref-src def-use-ref-src20,629
+(defalias 'def-use-ref-pos def-use-ref-pos21,672
+(defun def-use-ref< 22,715
+(defun def-use-sym 27,942
+(defalias 'def-use-sym-face def-use-sym-face30,1076
+(defalias 'def-use-sym-msg def-use-sym-msg31,1123
+(defalias 'def-use-sym-class def-use-sym-class32,1169
+(defalias 'def-use-sym-name def-use-sym-name33,1216
+(defalias 'def-use-sym-ref def-use-sym-ref34,1261
+(defun def-use-add-dus 39,1400
+(defun def-use-rem-dus 44,1602
+(defun def-use-dus-sym-at-ref 50,1754
+(defun def-use-dus-sym-to-uses 53,1831
+(defun def-use-dus-attr 56,1910
+(defun def-use-dus-title 59,1975
+(defun def-use-dus-finalize 62,2047
+(defvar def-use-dus-list 65,2122
+(defconst def-use-show-dus-buffer-name 70,2254
+(defconst def-use-show-dus-mode-map72,2317
+(define-derived-mode def-use-show-dus-mode 85,2716
+(defun def-use-show-dus 89,2859
+(defun def-use-show-dus-update 100,3189
+(defun def-use-show-dus-del 117,3747
+(defun def-use-attrs 128,4105
+(defun def-use-query 133,4249
+(defun def-use-sym-at-ref 150,4758
+(defun def-use-sym-to-uses 188,6216
+
+def-use-mode.el,2231
+(defvar def-use-load-time 18,473
+(defun def-use-set-custom-and-update 20,503
+(defgroup def-use 28,726
+(defface def-use-def-face32,838
+(defface def-use-unused-def-face39,1021
+(defface def-use-use-face46,1220
+(defface def-use-mark-face53,1397
+(defface def-use-view-face60,1579
+(defcustom def-use-delay 67,1788
+(defcustom def-use-priority 80,2263
+(defcustom def-use-marker-ring-length 85,2372
+(defcustom def-use-auto-show-symbol-messages 91,2548
+(defcustom def-use-key-bindings98,2765
+(defun def-use-sym-at-point 120,3772
+(defun def-use-current-sym 126,4003
+(defun def-use-current-ref 130,4167
+(defvar def-use-marker-ring 137,4382
+(defun def-use-create-marker-ring 141,4594
+(defun def-use-pop-ref-mark 145,4709
+(defun def-use-jump-to-def 158,5229
+(defun def-use-jump-to-next 166,5531
+(defun def-use-jump-to-prev 179,6072
+(defun def-use-goto-ref 184,6254
+(defun def-use-goto-pos 196,6750
+(defun def-use-all-refs-sorted 200,6866
+(defconst def-use-ref-regexp 210,7198
+(defconst def-use-list-mode-map212,7271
+(define-derived-mode def-use-list-mode 226,7842
+(defvar def-use-list-ref-to-overlay-alist 230,7981
+(defvar def-use-list-sym 231,8028
+(defun def-use-list-all-refs 233,8059
+(defun def-use-list-view-ref 264,9311
+(defun def-use-list-view-mark-all 276,9759
+(defun def-use-list-view-unmark-all 295,10542
+(defun def-use-show-msg 309,11009
+(defun def-use-show-info 320,11464
+(defun def-use-format-sym 327,11656
+(defun def-use-format-sym-title 335,11953
+(defun def-use-format-ref 346,12354
+(defvar def-use-highlighted-sym 360,12834
+(defvar def-use-highlighted-buffer-file-truename 361,12871
+(defvar def-use-highlighted-overlays 362,12925
+(defun def-use-delete-highlighting 364,12968
+(defun def-use-highlight-ref 370,13203
+(defun def-use-create-overlay 374,13360
+(defun def-use-highlight-sym 382,13651
+(defun def-use-highlight-current 426,15565
+(defvar def-use-highlight-timer 436,15858
+(defun def-use-delete-highlight-timer 438,15896
+(defun def-use-create-highlight-timer 443,16061
+(defun def-use-mode-enabled-in-some-buffer 454,16434
+(defvar def-use-mode-map 460,16602
+(defun def-use-build-mode-map 464,16734
+(define-minor-mode def-use-mode475,17120
+(defun def-use-update 491,17482
+
+def-use-sym.el,412
+(defun def-use-pos-to-point 11,256
+(defun def-use-point-to-pos 17,466
+(defvar def-use-mode-to-move-to-symbol-start-alist 30,873
+(defvar def-use-mode-to-move-to-symbol-end-alist 34,1049
+(defun def-use-move-to-symbol-start 38,1211
+(defun def-use-move-to-symbol-end 45,1464
+(defun def-use-ref-at-point 52,1709
+(defun def-use-extract-sym-name-at-point 64,2069
+(defun def-use-extract-sym-name-at-ref 77,2629
+
+def-use-util.el,896
+(defun def-use-buffer-file-truename 15,460
+(defvar def-use-file-truename-table21,677
+(defun def-use-file-truename 25,819
+(defun def-use-find-buffer-visiting-file 35,1167
+(defun def-use-find-file 43,1493
+(defun def-use-point-at-next-line 63,2139
+(defun def-use-point-at-current-line 69,2286
+(defun def-use-current-line 75,2439
+(defun def-use-gethash-or-put 79,2581
+(defvar def-use-intern-table83,2714
+(defun def-use-intern 87,2852
+(defun def-use-hash-table-to-assoc-list 93,3086
+(defun def-use-hash-table-to-key-list 103,3386
+(defun def-use-hash-table-to-value-list 108,3567
+(defun def-use-set-to-list 113,3756
+(defun def-use-make-hash-table 117,3895
+(defun def-use-kill-current-buffer 121,4019
+(defun def-use-add-face 126,4138
+(defun def-use-time-to-double 132,4327
+(defun def-use-attr-newer? 138,4492
+(defun def-use-attr-changed? 146,4842
+(defun def-use-goto-line 159,5378
+
+doreme-frm.el,4518
+(defvar text-scale-mode)589,30395
+(defvar text-scale-mode-amount)590,30468
+(defgroup doremi-frame-commands 597,30614
+(defcustom doremi-frame-config-ring-size 615,31438
+(defcustom doremi-move-frame-wrap-within-display-flag 620,31598
+(defcustom doremi-push-frame-config-for-cmds-flag 628,31981
+(defcustom doremi-RGB-increment-factor 635,32277
+(defcustom doremi-wrap-color-flag 683,34829
+(defvar doremi-frame-config-ring 693,35264
+(defvar doremi-last-face-value 697,35448
+(defvar doremi-last-frame-color 711,36052
+(defvar doremi-current-increment 724,36581
+(defalias 'doremi-font-size+ doremi-font-size+732,36844
+(defun doremi-frame-font-size+ 734,36914
+(defun doremi-font+ 776,38745
+(defun doremi-frame-width+ 791,39331
+(defun doremi-frame-height+ 809,40192
+(defun doremi-frame-horizontally+ 836,41431
+(defun doremi-frame-vertically+ 869,43047
+(defun doremi-frame-new-position 892,44191
+(defun doremi-push-current-frame-config 909,44993
+(defun doremi-frame-config-wo-parameters 917,45460
+(defun doremi-delete-if 930,46152
+(defun doremi-push-frame-config-for-command 945,46727
+(defun doremi-frame-configs+ 970,47990
+(defun doremi-undo-last-frame-color-change 988,48673
+(defun doremi-bg-color-name+ 1004,49493
+(defun doremi-bg-red+ 1015,50039
+(defun doremi-bg-green+ 1022,50259
+(defun doremi-bg-blue+ 1029,50514
+(defun doremi-bg-cyan+ 1036,50767
+(defun doremi-bg-magenta+ 1043,51024
+(defun doremi-bg-yellow+ 1050,51285
+(defun doremi-bg-hue+ 1057,51544
+(defalias 'doremi-bg-purity+ doremi-bg-purity+1064,51789
+(defun doremi-bg-saturation+ 1066,51857
+(defalias 'doremi-bg-brightness+ doremi-bg-brightness+1073,52122
+(defun doremi-bg-value+ 1075,52189
+(defun doremi-bg+ 1084,52518
+(defun doremi-bg-hue-stepping-saturation+ 1174,56749
+(defun doremi-all-frames-bg+ 1198,58005
+(defun doremi-increment-background-color 1226,59336
+(defun doremi-set-background-color 1244,60290
+(defun doremi-fg-color-name+ 1259,61012
+(defun doremi-fg-red+ 1270,61558
+(defun doremi-fg-green+ 1277,61809
+(defun doremi-fg-blue+ 1284,62064
+(defun doremi-fg-cyan+ 1291,62317
+(defun doremi-fg-magenta+ 1298,62574
+(defun doremi-fg-yellow+ 1305,62835
+(defun doremi-fg-hue+ 1312,63094
+(defalias 'doremi-fg-purity+ doremi-fg-purity+1319,63339
+(defun doremi-fg-saturation+ 1321,63407
+(defalias 'doremi-fg-brightness+ doremi-fg-brightness+1328,63672
+(defun doremi-fg-value+ 1330,63739
+(defun doremi-fg-hue-stepping-saturation+ 1339,64093
+(defun doremi-fg+ 1359,65173
+(defun doremi-all-frames-fg+ 1376,66070
+(defun doremi-increment-foreground-color 1404,67392
+(defun doremi-set-foreground-color 1422,68349
+(defalias 'toggle-doremi-wrap-color toggle-doremi-wrap-color1436,68991
+(defun doremi-toggle-wrap-color 1438,69069
+(defun doremi-undo-last-face-change 1445,69302
+(defun doremi-face-bg+ 1459,70002
+(defun doremi-face-bg-hue-stepping-saturation+ 1498,72037
+(defun doremi-face-bg-color-name+ 1528,73538
+(defun doremi-all-faces-bg+ 1546,74314
+(defun doremi-increment-face-bg-color 1568,75353
+(defun doremi-face-fg+ 1586,76276
+(defun doremi-face-fg-hue-stepping-saturation+ 1606,77344
+(defun doremi-face-fg-color-name+ 1632,78664
+(defun doremi-all-faces-fg+ 1650,79440
+(defun doremi-increment-face-fg-color 1672,80479
+(defun doremi-increment-color-component 1690,81402
+(defun doremi-read-component 1748,84305
+(defun doremi-read-increment-arg 1754,84512
+(defun doremi-increment-face-color-read-args 1784,86136
+(defun doremi-all-frames-bg/fg-1 1798,86773
+(defun doremi-bg-1 1833,88688
+(defun doremi-fg-1 1838,88910
+(defun doremi-frame-color-component 1843,89132
+(defun doremi-adjust-increment-for-color-component 1878,91098
+(defun doremi-increment-background-color-1 1894,91833
+(defun doremi-increment-foreground-color-1 1898,92061
+(defun doremi-increment-frame-color 1902,92289
+(defun doremi-frame-hue-stepping-saturation 1918,93257
+(defun doremi-bg/fg-color-name-1 1938,94386
+(defun doremi-increment-face-color 1953,95094
+(defun doremi-face-default 1967,95824
+(defun doremi-face-hue-stepping-saturation 1975,96199
+(defun doremi-all-faces-bg/fg-1 1993,97201
+(defun doremi-face-bg/fg-1 2029,99098
+(defun doremi-face-color-component 2077,101810
+(defun doremi-increment-color 2112,103732
+(defun doremi-increment-red 2195,108577
+(defun doremi-increment-green 2205,109103
+(defun doremi-increment-blue 2215,109636
+(defun doremi-wrap-or-limit-color-component 2225,110167
+(defun doremi-face-bg/fg-color-name-1 2232,110416
+(defun doremi-set-frame-color 2310,114494
+
+doremi-cmd.el,563
+(defvar color-theme-initialized)214,8743
+(defvar color-themes)215,8776
+(defgroup doremi-misc-commands 222,8871
+(defcustom doremi-color-themes 250,10345
+(defun doremi-color-themes+ 257,10551
+(defun doremi-color-themes-1 298,12596
+(defun doremi-bookmarks+ 307,13007
+(defun doremi-buffers+ 320,13453
+(defun doremi-buffers-1 329,13743
+(defun doremi-marks+ 338,14053
+(defun doremi-marks-1 353,14616
+(defun doremi-global-marks+ 366,15055
+(defun doremi-global-marks-1 382,15699
+(defun doremi-window-height+ 396,16227
+(defun doremi-window-width+ 410,16817
+
+doremi.el,480
+(defvar mouse-wheel-down-event)210,8527
+(defvar mouse-wheel-up-event)211,8559
+(defgroup doremi 218,8664
+(defcustom doremi-up-keys 236,9490
+(defcustom doremi-down-keys 245,9889
+(defcustom doremi-boost-up-keys 254,10289
+(defcustom doremi-boost-down-keys 262,10639
+(defcustom doremi-boost-scale-factor 270,10994
+(defun doremi 287,11809
+(defun doremi-intersection 483,23139
+(defun doremi-set-new-value 497,23813
+(defun doremi-limit 505,24196
+(defun doremi-wrap 520,24653
+
+doremi-frm.el,4518
+(defvar text-scale-mode)591,30483
+(defvar text-scale-mode-amount)592,30556
+(defgroup doremi-frame-commands 599,30702
+(defcustom doremi-frame-config-ring-size 617,31526
+(defcustom doremi-move-frame-wrap-within-display-flag 622,31686
+(defcustom doremi-push-frame-config-for-cmds-flag 630,32069
+(defcustom doremi-RGB-increment-factor 637,32365
+(defcustom doremi-wrap-color-flag 685,34917
+(defvar doremi-frame-config-ring 695,35352
+(defvar doremi-last-face-value 699,35536
+(defvar doremi-last-frame-color 713,36140
+(defvar doremi-current-increment 726,36669
+(defalias 'doremi-font-size+ doremi-font-size+734,36932
+(defun doremi-frame-font-size+ 736,37002
+(defun doremi-font+ 778,38833
+(defun doremi-frame-width+ 793,39419
+(defun doremi-frame-height+ 811,40280
+(defun doremi-frame-horizontally+ 838,41519
+(defun doremi-frame-vertically+ 871,43135
+(defun doremi-frame-new-position 894,44279
+(defun doremi-push-current-frame-config 911,45081
+(defun doremi-frame-config-wo-parameters 919,45548
+(defun doremi-delete-if 932,46240
+(defun doremi-push-frame-config-for-command 947,46815
+(defun doremi-frame-configs+ 972,48078
+(defun doremi-undo-last-frame-color-change 990,48761
+(defun doremi-bg-color-name+ 1006,49581
+(defun doremi-bg-red+ 1017,50127
+(defun doremi-bg-green+ 1024,50347
+(defun doremi-bg-blue+ 1031,50602
+(defun doremi-bg-cyan+ 1038,50855
+(defun doremi-bg-magenta+ 1045,51112
+(defun doremi-bg-yellow+ 1052,51373
+(defun doremi-bg-hue+ 1059,51632
+(defalias 'doremi-bg-purity+ doremi-bg-purity+1066,51877
+(defun doremi-bg-saturation+ 1068,51945
+(defalias 'doremi-bg-brightness+ doremi-bg-brightness+1075,52210
+(defun doremi-bg-value+ 1077,52277
+(defun doremi-bg+ 1086,52606
+(defun doremi-bg-hue-stepping-saturation+ 1176,56837
+(defun doremi-all-frames-bg+ 1200,58093
+(defun doremi-increment-background-color 1228,59424
+(defun doremi-set-background-color 1246,60378
+(defun doremi-fg-color-name+ 1261,61100
+(defun doremi-fg-red+ 1272,61646
+(defun doremi-fg-green+ 1279,61897
+(defun doremi-fg-blue+ 1286,62152
+(defun doremi-fg-cyan+ 1293,62405
+(defun doremi-fg-magenta+ 1300,62662
+(defun doremi-fg-yellow+ 1307,62923
+(defun doremi-fg-hue+ 1314,63182
+(defalias 'doremi-fg-purity+ doremi-fg-purity+1321,63427
+(defun doremi-fg-saturation+ 1323,63495
+(defalias 'doremi-fg-brightness+ doremi-fg-brightness+1330,63760
+(defun doremi-fg-value+ 1332,63827
+(defun doremi-fg-hue-stepping-saturation+ 1341,64181
+(defun doremi-fg+ 1361,65261
+(defun doremi-all-frames-fg+ 1378,66158
+(defun doremi-increment-foreground-color 1406,67480
+(defun doremi-set-foreground-color 1424,68437
+(defalias 'toggle-doremi-wrap-color toggle-doremi-wrap-color1438,69079
+(defun doremi-toggle-wrap-color 1440,69157
+(defun doremi-undo-last-face-change 1447,69390
+(defun doremi-face-bg+ 1461,70090
+(defun doremi-face-bg-hue-stepping-saturation+ 1500,72125
+(defun doremi-face-bg-color-name+ 1530,73626
+(defun doremi-all-faces-bg+ 1548,74402
+(defun doremi-increment-face-bg-color 1570,75441
+(defun doremi-face-fg+ 1588,76364
+(defun doremi-face-fg-hue-stepping-saturation+ 1608,77432
+(defun doremi-face-fg-color-name+ 1634,78752
+(defun doremi-all-faces-fg+ 1652,79528
+(defun doremi-increment-face-fg-color 1674,80567
+(defun doremi-increment-color-component 1692,81490
+(defun doremi-read-component 1750,84393
+(defun doremi-read-increment-arg 1756,84600
+(defun doremi-increment-face-color-read-args 1786,86224
+(defun doremi-all-frames-bg/fg-1 1800,86861
+(defun doremi-bg-1 1835,88776
+(defun doremi-fg-1 1840,88998
+(defun doremi-frame-color-component 1845,89220
+(defun doremi-adjust-increment-for-color-component 1880,91186
+(defun doremi-increment-background-color-1 1896,91921
+(defun doremi-increment-foreground-color-1 1900,92149
+(defun doremi-increment-frame-color 1904,92377
+(defun doremi-frame-hue-stepping-saturation 1920,93345
+(defun doremi-bg/fg-color-name-1 1940,94474
+(defun doremi-increment-face-color 1955,95182
+(defun doremi-face-default 1969,95912
+(defun doremi-face-hue-stepping-saturation 1977,96287
+(defun doremi-all-faces-bg/fg-1 1995,97289
+(defun doremi-face-bg/fg-1 2031,99186
+(defun doremi-face-color-component 2079,101898
+(defun doremi-increment-color 2114,103820
+(defun doremi-increment-red 2197,108665
+(defun doremi-increment-green 2207,109191
+(defun doremi-increment-blue 2217,109724
+(defun doremi-wrap-or-limit-color-component 2227,110255
+(defun doremi-face-bg/fg-color-name-1 2234,110504
+(defun doremi-set-frame-color 2312,114582
+
+doremi-mac.el,127
+(defcustom define-doremi-before-hook 121,4118
+(defcustom define-doremi-after-hook 127,4287
+(defmacro define-doremi 144,4750
+
+elscreen.el,7698
+(defconst elscreen-version 40,1367
+(defgroup elscreen 42,1409
+(defcustom elscreen-prefix-key 47,1515
+(defcustom elscreen-default-buffer-name 57,1828
+(defcustom elscreen-default-buffer-initial-major-mode 63,1997
+(defcustom elscreen-default-buffer-initial-message 69,2210
+(defcustom elscreen-mode-to-nickname-alist77,2533
+(defcustom elscreen-buffer-to-nickname-alist100,3401
+(defcustom elscreen-startup-command-line-processing 116,4042
+(defcustom elscreen-display-screen-number 123,4317
+(defcustom elscreen-display-tab 129,4520
+(defcustom elscreen-tab-display-control 149,5478
+(defcustom elscreen-tab-display-kill-screen 159,5816
+(defface elscreen-tab-background-face171,6351
+(defface elscreen-tab-control-face179,6569
+(defface elscreen-tab-current-screen-face188,6863
+(defface elscreen-tab-other-screen-face195,7052
+(defvar elscreen-map 206,7357
+(define-key elscreen-map 208,7425
+(define-key elscreen-map 209,7475
+(define-key elscreen-map 210,7525
+(define-key elscreen-map 211,7574
+(define-key elscreen-map 212,7622
+(define-key elscreen-map 213,7670
+(define-key elscreen-map 214,7737
+(define-key elscreen-map 215,7792
+(define-key elscreen-map 216,7844
+(define-key elscreen-map 217,7896
+(define-key elscreen-map 218,7944
+(define-key elscreen-map 219,7992
+(define-key elscreen-map 220,8042
+(define-key elscreen-map 221,8092
+(define-key elscreen-map 222,8140
+(define-key elscreen-map 223,8199
+(define-key elscreen-map 224,8249
+(define-key elscreen-map 225,8297
+(define-key elscreen-map 226,8345
+(define-key elscreen-map 227,8393
+(define-key elscreen-map 228,8441
+(define-key elscreen-map 229,8489
+(define-key elscreen-map 230,8537
+(define-key elscreen-map 231,8585
+(define-key elscreen-map 232,8633
+(define-key elscreen-map 233,8683
+(define-key elscreen-map 234,8731
+(define-key elscreen-map 235,8799
+(define-key elscreen-map 236,8867
+(define-key elscreen-map 237,8931
+(define-key elscreen-map 238,8995
+(define-key elscreen-map 239,9051
+(define-key elscreen-map 240,9107
+(define-key elscreen-map 241,9166
+(define-key elscreen-map 242,9233
+(define-key elscreen-map 243,9286
+(define-key elscreen-map 244,9349
+(define-key elscreen-map 245,9398
+(define-key elscreen-map 246,9466
+(define-key elscreen-map 247,9538
+(define-key elscreen-map 248,9600
+(define-key elscreen-map 249,9648
+(define-key elscreen-map 250,9707
+(define-key elscreen-map 251,9755
+(defun elscreen-set-prefix-key 253,9805
+(defvar elscreen-help 269,10596
+(defun elscreen--put-alist 300,12330
+(defun elscreen--set-alist 311,12723
+(defun elscreen--del-alist 317,12963
+(defun elscreen--remove-alist 325,13173
+(defvar elscreen-frame-confs 332,13410
+(defun elscreen-current-window-configuration 335,13514
+(defun elscreen-default-window-configuration 338,13619
+(defun elscreen-apply-window-configuration 351,14194
+(defun get-alist 358,14505
+(defsubst elscreen-copy-tree 361,14562
+(defun elscreen-copy-tree-1 366,14683
+(defmacro elscreen-save-screen-excursion 376,15016
+(defsubst elscreen-get-frame-confs 399,15975
+(defun elscreen-make-frame-confs 402,16061
+(defun elscreen-delete-frame-confs 426,17217
+(defsubst elscreen-get-conf-list 432,17448
+(defsubst elscreen-set-conf-list 435,17553
+(defun elscreen-get-screen-property 439,17725
+(defun elscreen-set-screen-property 443,17891
+(defun elscreen-delete-screen-property 448,18153
+(defun elscreen-get-number-of-screens 453,18403
+(defun elscreen-one-screen-p 457,18535
+(defun elscreen-get-screen-list 461,18652
+(defun elscreen-screen-live-p 465,18784
+(defun elscreen-get-window-configuration 469,18913
+(defun elscreen-set-window-configuration 475,19188
+(defun elscreen-get-screen-nickname 481,19515
+(defun elscreen-set-screen-nickname 486,19739
+(defun elscreen-delete-screen-nickname 492,20021
+(defun elscreen-append-screen-to-history 498,20310
+(defun elscreen-delete-screen-from-history 502,20479
+(defun elscreen-set-current-screen 507,20716
+(defun elscreen-get-current-screen 512,20959
+(defun elscreen-get-previous-screen 515,21048
+(defun elscreen-status-label 518,21139
+(defvar elscreen-notify-screen-modification-suppress-flag 527,21451
+(defmacro elscreen-notify-screen-modification-suppress 528,21514
+(defvar elscreen-screen-update-hook 532,21661
+(defun elscreen-run-screen-update-hook 533,21702
+(defun elscreen-screen-modified-p 539,21941
+(defun elscreen-set-screen-modified 546,22233
+(defvar elscreen-screen-modified-hook-pwc 550,22389
+(defun elscreen-notify-screen-modification 551,22436
+(defmacro elscreen-screen-modified-hook-setup 567,23180
+(defun elscreen-get-screen-to-name-alist-cache 598,24371
+(defun elscreen-set-screen-to-name-alist-cache 601,24478
+(defvar elscreen-mode-to-nickname-alist-symbol-list 604,24596
+(defvar elscreen-mode-to-nickname-alist-internal 605,24653
+(defun elscreen-rebuild-mode-to-nickname-alist 606,24707
+(defun elscreen-set-mode-to-nickname-alist 612,24996
+(defvar elscreen-buffer-to-nickname-alist-symbol-list 618,25294
+(defvar elscreen-buffer-to-nickname-alist-internal 619,25353
+(defun elscreen-rebuild-buffer-to-nickname-alist 620,25409
+(defun elscreen-set-buffer-to-nickname-alist 626,25704
+(defsubst elscreen-get-alist-to-nickname 632,26016
+(defun elscreen-get-screen-to-name-alist 654,26800
+(defun elscreen-truncate-screen-name 715,29773
+(defun elscreen-goto-internal 727,30231
+(defvar elscreen-create-hook 734,30526
+(defun elscreen-create-internal 735,30560
+(defun elscreen-kill-internal 759,31405
+(defun elscreen-find-screens 764,31545
+(defun elscreen-find-screen 780,32079
+(defun elscreen-find-screen-by-buffer 786,32334
+(defun elscreen-find-screen-by-major-mode 809,33258
+(defvar elscreen-last-message 831,34088
+(defun elscreen-message 833,34166
+(defun elscreen-create 845,34445
+(defun elscreen-clone 852,34624
+(defvar elscreen-kill-hook 869,35336
+(defun elscreen-kill 870,35368
+(defun elscreen-kill-screen-and-buffers 890,36065
+(defun elscreen-kill-others 907,36728
+(defvar elscreen-goto-hook 936,38054
+(defun elscreen-goto 937,38086
+(defun elscreen-next 955,38642
+(defun elscreen-previous 970,39107
+(defun elscreen-toggle 985,39588
+(defun elscreen-jump 996,39890
+(defalias 'elscreen-jump-0 elscreen-jump-01002,40123
+(defalias 'elscreen-jump-9 elscreen-jump-91003,40166
+(defun elscreen-swap 1005,40210
+(defun elscreen-screen-nickname 1022,40946
+(defun elscreen-display-screen-name-list 1032,41317
+(defvar elscreen-help-symbol-list 1049,41841
+(defun elscreen-set-help 1050,41880
+(defun elscreen-help 1054,42013
+(defun elscreen-display-version 1066,42348
+(defun elscreen-toggle-display-screen-number 1071,42498
+(defun elscreen-toggle-display-tab 1077,42736
+(defun elscreen-display-last-message 1083,42938
+(defun elscreen-display-time 1088,43099
+(defun elscreen-select-and-goto 1100,43423
+(defun elscreen-find-and-goto-by-buffer 1188,47481
+(defun elscreen-find-file 1207,48365
+(defun elscreen-find-file-read-only 1214,48628
+(defun elscreen-dired 1222,48959
+(defun elscreen-execute-extended-command 1228,49236
+(defvar elscreen-e21-mode-line-string 1266,51131
+(defun elscreen-e21-mode-line-update 1267,51176
+(define-key-after (lookup-key 1283,51816
+(defvar elscreen-e21-menu-bar-command-entries1286,51942
+(defun elscreen-e21-menu-bar-update 1346,54200
+(defvar elscreen-e21-tab-format 1378,55607
+(defsubst elscreen-e21-tab-create-keymap 1381,55699
+(defsubst elscreen-e21-tab-width 1402,56496
+(defun elscreen-e21-tab-escape-% 1413,56948
+(defun elscreen-e21-tab-update 1427,57500
+(defun elscreen-command-line-funcall 1535,62708
+(defun elscreen-command-line-find-file 1555,63557
+(defun elscreen-link 1592,64731
+(defun elscreen-split 1609,65373
+(defun elscreen-start 1623,65793
+
+emacs,2829
+;;;My emacs lisp init file,2,19
+;;bit of an odd hack, sbcl reads the SBCL_HOME environment variable12,450
+;;to determine the core to load, this script just sets that variable13,518
+ auto-window-vscroll nil)67,2508
+;;;Keys82,3110
+;;C-x ESC146,6257
+;; (keymap147,6267
+;;  (backtab . icicle-complete-keys)keys148,6278
+;;  (58 . repeat-complex-command)command149,6315
+;;  (27 . repeat-complex-command)command150,6352
+;;  (27 . repeat-complex-command));ESC150,6352
+;; (keymap152,6410
+;;  (backtab . icicle-complete-keys)keys153,6421
+;;  (46 . isearch-forward-symbol-at-point)point154,6458
+;;  (95 . isearch-forward-symbol)symbol155,6504
+;;  (95 . isearch-forward-symbol) ;_155,6504
+;;  (119 . isearch-forward-word)word156,6541
+;;  (119 . isearch-forward-word) ;w156,6541
+;;  (104 keymap 157,6577
+;;  (104 keymap ;h157,6577
+;;       (backtab . icicle-complete-keys)keys158,6596
+;;       (119 . hi-lock-write-interactive-patterns)patterns159,6638
+;;       (119 . hi-lock-write-interactive-patterns);w159,6638
+;;       (102 . hi-lock-find-patterns)patterns160,6692
+;;       (102 . hi-lock-find-patterns);f160,6692
+;;       (117 . unhighlight-regexp)regexp161,6733
+;;       (117 . unhighlight-regexp);u161,6733
+;;       (46 . highlight-symbol-at-point)point162,6771
+;;       (108 . highlight-lines-matching-regexp)regexp163,6815
+;;       (108 . highlight-lines-matching-regexp);l163,6815
+;;       (112 . highlight-phrase)phrase164,6866
+;;       (112 . highlight-phrase);p164,6866
+;;       (114 . highlight-regexp)regexp165,6902
+;;       (114 . highlight-regexp));r165,6902
+;;  (111 . occur)166,6939
+;; (keymap168,6975
+;;  (backtab . icicle-complete-keys)keys169,6986
+;;  (9 . move-to-column)column170,7023
+;;  (9 . move-to-column);tab170,7023
+;;  (112 . previous-error)error171,7052
+;;  (112 . previous-error);p171,7052
+;;  (110 . next-error)error172,7081
+;;  (110 . next-error);n172,7081
+;;  (27 keymap 173,7106
+;;  (27 keymap ;;ESC/Meta/AltAlt173,7106
+;;      (backtab . icicle-complete-keys)keys174,7136
+;;      (112 . previous-error)error175,7177
+;;      (112 . previous-error);p175,7177
+;;      (110 . next-error)error176,7210
+;;      (110 . next-error);n176,7210
+;;      (103 . goto-line)line177,7239
+;;      (103 . goto-line));g177,7239
+;;  (103 . goto-line)line178,7268
+;;  (103 . goto-line);(M-)g178,7268
+;;  (99 . goto-char)char179,7296
+;;  (99 . goto-char));c179,7296
+;; \M-p and \M-n are unbound in the global keymap180,7320
+;;; Backup files254,10137
+      delete-old-versions t 260,10393
+      version-control t 261,10445
+      kept-new-versions versions262,10508
+      kept-old-versions versions263,10562
+      kept-old-versions 2)   ; and some old ones263,10562
+;;(add-to-list 'org-src-lang-modes '("sml" . sml-mode)mode291,11810
+
+esml-du-mlton.el,1697
+(defgroup esml-du 13,293
+(defcustom esml-du-notify 17,381
+(defcustom esml-du-dufs-auto-load 24,602
+(defcustom esml-du-dufs-recent 31,810
+(defvar esml-du-mlton-history 42,1182
+(defun esml-du-mlton 44,1218
+(defun esml-du-character-class 77,2377
+(defun esml-du-extract-following-symbol 86,2574
+(defun esml-du-move-to-symbol-start 92,2743
+(defun esml-du-move-to-symbol-end 125,4407
+(defun esml-du-title 139,4973
+(defun esml-du-sym-at-ref 144,5106
+(defun esml-du-sym-to-uses 156,5653
+(defun esml-du-stop-parsing 185,6793
+(defvar esml-du-live-dufs 190,6915
+(defun esml-du-set-live-dufs 192,6947
+(defun esml-du-finalize 200,7182
+(defun esml-du-ctx 218,7742
+(defun esml-du-ctx-reload-timer 222,7868
+(defun esml-du-ctx-load-cnt 223,7925
+(defun esml-du-ctx-poll-timer 224,7982
+(defun esml-du-ctx-buf 225,8039
+(defun esml-du-ctx-attr 226,8096
+(defun esml-du-ctx-duf 227,8153
+(defun esml-du-ctx-ref-to-sym-table 228,8210
+(defun esml-du-ctx-sym-to-uses-table 229,8267
+(defun esml-du-ctx-inc-load-cnt 231,8325
+(defun esml-du-ctx-set-reload-timer 234,8398
+(defun esml-du-ctx-set-poll-timer 235,8466
+(defun esml-du-ctx-set-buf 236,8534
+(defun esml-du-ctx-set-attr 237,8600
+(defun esml-du-read 242,8755
+(defun esml-du-read-opt-str 249,8956
+(defconst esml-du-classes 254,9070
+(defun esml-du-reload 263,9616
+(defun esml-du-try-to-read-symbol-at-ref-once 286,10373
+(defun esml-du-try-to-read-all-symbols-at-ref 293,10611
+(defun esml-du-try-to-read-symbol-at-ref 301,10847
+(defun esml-du-ref-to-appx-syntax 319,11538
+(defconst esml-du-highlight-type-map 326,11783
+(defun esml-du-highlight-type 342,12369
+(defun esml-du-read-one-symbol 357,12839
+(defun esml-du-load 404,14822
+
+esml-gen.el,239
+(defgroup esml-gen 21,440
+(defun esml-extract-field-names 30,685
+(defcustom esml-gen-fru-setter-template63,2037
+(defun esml-gen-fru-setter 80,2798
+(defcustom esml-gen-ftu-setters-template123,5011
+(defun esml-gen-ftu-setters 142,5792
+
+esml-mlb-mode.el,2313
+(defvar esml-mlb-load-time 47,1317
+(defun esml-mlb-set-custom-and-update 49,1348
+(defgroup esml-mlb 57,1574
+(defcustom esml-mlb-additional-annotations61,1656
+(defcustom esml-mlb-additional-path-variables73,2135
+(defcustom esml-mlb-completion-ignored-files-regexp 82,2492
+(defcustom esml-mlb-indentation-offset 88,2684
+(defcustom esml-mlb-key-bindings93,2797
+(defcustom esml-mlb-mlb-path-map-files108,3393
+(defcustom esml-mlb-path-suffix-regexp 116,3633
+(defcustom esml-mlb-show-annotations-command123,3891
+(defcustom esml-mlb-show-basis-command130,4105
+(defcustom esml-mlb-show-path-map-command138,4390
+(defface font-lock-interface-def-face148,4693
+(defvar esml-mlb-annotations 156,4947
+(defun esml-mlb-parse-annotations 160,5075
+(defvar esml-mlb-path-variables 187,6170
+(defun esml-mlb-parse-path-variables-from-string 191,6304
+(defun esml-mlb-parse-path-variables 196,6538
+(defun esml-mlb-expand-path 221,7569
+(defconst esml-mlb-string-continue-regexp 246,8465
+(defconst esml-mlb-string-char-regexp247,8535
+(defconst esml-mlb-inside-string-regexp250,8674
+(defconst esml-mlb-string-regexp 253,8809
+(defconst esml-mlb-inside-comment-regexp 254,8887
+(defconst esml-mlb-comment-regexp255,8959
+(defconst esml-mlb-path-var-chars 257,9043
+(defconst esml-mlb-unquoted-path-chars 258,9091
+(defconst esml-mlb-unquoted-path-or-ref-chars259,9147
+(defconst esml-mlb-compiler-ann-prefix261,9240
+(defun esml-mlb-<token>-to-regexp 264,9342
+(defconst esml-mlb-keywords272,9593
+(defconst esml-mlb-keywords-usually-followed-by-space277,9757
+(defconst esml-mlb-mode-syntax-table282,9952
+(defvar esml-mlb-font-lock-table 303,10648
+(defun esml-mlb-build-font-lock-table 305,10687
+(defconst esml-mlb-indent-sync-keywords-regexp369,13289
+(defun esml-mlb-previous-indentation 376,13556
+(defun esml-mlb-indent-line 406,14720
+(defun esml-mlb-filter-file-completions 459,16663
+(defun esml-mlb-complete 481,17597
+(defun esml-mlb-indent-line-or-complete 621,24376
+(defun esml-mlb-find-file-at-point 630,24737
+(defconst esml-mlb-show-basis-process-name 651,25618
+(defun esml-mlb-show-basis 653,25682
+(defvar esml-mlb-mode-map 699,27553
+(defun esml-mlb-build-mode-map 703,27679
+(defvar esml-mlb-mode-hook 717,28118
+(define-derived-mode esml-mlb-mode 720,28193
+(defun esml-mlb-update 736,28722
+
+esml-util.el,425
+(defconst esml-sml-symbolic-chars 12,256
+(defconst esml-sml-alphanumeric-chars16,415
+(defconst esml-sml-symbolic-keywords 21,625
+(defconst esml-sml-alphanumeric-keywords26,921
+(defconst esml-sml-numeric-literal-regexp35,1473
+(defconst esml-sml-modes 39,1630
+(defun esml-point-preceded-by 45,1872
+(defun esml-insert-or-skip-if-looking-at 58,2430
+(defun esml-split-string 68,2822
+(defun esml-string-matches-p 71,2928
+
+ewm.el,94
+(defun ewm-split-quarters 2,30
+(defun ewm-split-ratio 9,297
+(defun ewm-open-buffers 20,839
+
+faces+.el,74
+(defun face-foreground-20+ 208,8256
+(defun face-background-20+ 214,8511
+
+flex-mode.el,95
+(define-derived-mode flex-mode 1,0
+(defalias 'flex-indent-command flex-indent-command27,752
+
+flex-mode.elc,140
+;ELCELC1,0
+;;; Compiled2,9
+;;; This file uses dynamic docstrings,6,82
+;;; This file does not contain utf-8 non-ASCII characters,8,150
+
+gforth.el,4138
+(defun forth-emacs-older 67,2645
+(defun forth-require 83,3206
+(defun forth-idle-function 147,5224
+(defvar forth-idle-function-timer 155,5549
+(defun forth-install-motion-hook 158,5662
+(defvar forth-was-point 166,6018
+(defun forth-check-motion 168,6048
+(defvar forth-disable-parser 179,6451
+(defvar forth-jit-parser 187,6774
+(defvar forth-words 194,7032
+(defvar forth-use-objects 318,12966
+(defvar forth-objects-words320,13077
+(defvar forth-use-oof 352,14725
+(defvar forth-oof-words 354,14828
+(defvar forth-local-words 373,15726
+(defvar forth-custom-words 378,15968
+(defvar forth-hilight-level 382,16085
+(defvar forth-compiled-words 384,16155
+(defvar forth-indent-words 386,16234
+(defvar forth-local-indent-words 442,18761
+(defvar forth-custom-indent-words 448,19051
+(defvar forth-indent-level 452,19182
+(defvar forth-minor-indent-level 454,19250
+(defvar forth-compiled-indent-words 456,19330
+(defun forth-filter 463,19556
+(defun forth-words-filter 474,19939
+(defun forth-compile-words-mapper 483,20259
+(defun forth-compile-wordlist 500,20896
+(defun forth-compile-words 517,21340
+(defun forth-hack-local-variables 528,21825
+(defun forth-customize-words 537,22233
+(defun forth-previous-start 552,22874
+(defun forth-next-end 566,23446
+(defun forth-next-whitespace 576,23788
+(defun forth-previous-word 581,23917
+(defun forth-delete-properties 588,24119
+(defun forth-get-regexp-branch 595,24426
+(defun forth-next-known-forth-word 603,24706
+(defun forth-set-word-properties 620,25371
+(defun forth-update-properties 660,26962
+(defun forth-change-function 713,29353
+(defun forth-fontification-function 720,29587
+(defvar forth-defining-words 738,30198
+(defvar forth-defining-words-regexp 745,30480
+(defun forth-next-definition-starter 748,30588
+(defun forth-create-index 760,30969
+(defun forth-first-word-on-line-p 785,31850
+(defun forth-next-known-indent-word 795,32248
+(defun forth-convert-to-column 822,33311
+(defun forth-get-column-incr 834,33928
+(defun forth-get-anchor-column 858,35005
+(defun forth-indent-line 867,35276
+(defun forth-current-column 873,35528
+(defun forth-current-indentation 875,35619
+(defun forth-indent-to 879,35785
+(defun forth-delete-indentation 887,36007
+(defun forth-indent-command 893,36169
+(defun forth-remove-trailing 898,36289
+(defun forth-newline-remove-trailing 904,36505
+(defun forth-reindent-then-newline-and-indent 914,36855
+(defconst forth-c/l 924,37063
+(defconst forth-l/b 925,37125
+(defun forth-check-block-line 929,37287
+(defun forth-convert-from-block 942,37723
+(defun forth-pad-block-line 959,38298
+(defun forth-convert-tabs-in-line 971,38717
+(defun forth-delete-newline 981,39138
+(defun forth-convert-to-block 985,39251
+(defun forth-detect-block-file-p 1017,40461
+(defconst forth-block-format-description1028,40844
+(defvar forth-overlay-arrow-string 1039,41203
+(defvar forth-block-base 1040,41244
+(defvar forth-show-screen 1041,41310
+(defvar forth-warn-long-lines 1043,41411
+(defvar forth-screen-marker 1046,41520
+(defvar forth-screen-number-string 1047,41553
+(defun forth-update-show-screen 1049,41594
+(defun forth-update-warn-long-lines 1068,42421
+(defvar forth-mode-abbrev-table 1081,42837
+(define-abbrev-table 'forth-mode-abbrev-table forth-mode-abbrev-table1084,42922
+(defvar forth-mode-map 1086,42973
+(define-key forth-mode-map 1093,43155
+(define-key forth-mode-map 1094,43208
+(define-key forth-mode-map 1095,43266
+(define-key forth-mode-map 1096,43318
+(define-key forth-mode-map 1097,43366
+(define-key forth-mode-map 1098,43421
+(define-key forth-mode-map 1099,43496
+(define-key forth-mode-map 1100,43553
+(defun forth-find-tag 1123,44271
+(defvar forth-mode-syntax-table 1131,44571
+(defun forth-mode-variables 1150,45239
+(defun forth-mode 1194,47109
+(define-derived-mode forth-block-mode 1294,51140
+(defun forth-fill-paragraph 1330,52794
+(defun forth-comment-indent 1353,53680
+(defun forth-remove-tracers 1366,53913
+(define-key forth-mode-map 1371,54089
+(define-key forth-mode-map 1372,54137
+(defvar forth-compile-command 1375,54208
+(defun forth-split 1378,54303
+(defun forth-split-1 1382,54371
+
+hide-region.el,442
+(defgroup hide-region 88,2886
+(defcustom hide-region-before-string 94,3062
+(defcustom hide-region-after-string 100,3281
+(defcustom hide-region-propertize-markers 106,3499
+(defvar hide-region-overlays 111,3643
+(defun hide-region-hide 114,3734
+(defun hide-region-unhide 136,4694
+(defun hide-region-unhide-below 146,5073
+(defun hide-region-unhide-all 177,6168
+(defvar hide-region-show-flag 187,6523
+(defun hide-region-toggle 190,6626
+
+init.el,21
+(defadvice load 1,0
+
+julia-mode.el,949
+(defvar julia-mode-hook 13,197
+(defvar julia-mode-syntax-table17,286
+(defvar julia-mode-string-syntax-table46,1519
+(defvar julia-mode-char-syntax-table52,1671
+(defconst julia-string-regex58,1830
+(defconst julia-char-regex61,1912
+(defconst julia-unquote-regex64,2051
+(defconst julia-forloop-in-regex67,2162
+(defconst julia-font-lock-keywords71,2241
+(defconst julia-block-start-keywords92,3880
+(defconst julia-block-other-keywords96,4019
+(defconst julia-block-end-keywords99,4083
+(defun julia-member 102,4169
+(defun julia-find-comment-open 111,4360
+(defun julia-in-comment 123,4649
+(defun julia-strcount 127,4753
+(defun julia-in-brackets 136,4925
+(defun julia-at-keyword 141,5096
+(defun julia-safe-backward-sexp 151,5503
+(defun julia-last-open-block-pos 156,5670
+(defun julia-last-open-block 172,6113
+(defmacro error2nil 179,6291
+(defun julia-paren-indent 181,6360
+(defun julia-indent-line 195,6802
+(defun julia-mode 225,7861
+
+kana.el,946
+(defconst +table-size+ 4,71
+(defvar kana-table 5,99
+(defvar kana-array 6,151
+(defvar kana-consonants 7,201
+(defvar kana-consonants-arr 8,268
+(defvar kana-dakuten 9,338
+(defvar kana-dakuten-arr 10,397
+(defvar kana-handakuten 11,459
+(defvar kana-handakuten-arr 12,518
+(defvar kana-vowels 13,580
+(defvar kana-vowels-arr 14,624
+(defvar kana-extra 15,671
+(defvar kana-special 16,730
+(defvar script?23,1226
+(defvar current-dir-name26,1349
+(defun 2+ 30,1486
+(defmacro kana-roman 37,1818
+(defmacro kana-roman-2 39,1950
+(defmacro kana-roman-3 41,2081
+(defmacro do-vowels 43,2215
+(defmacro do-vowels-y 52,2562
+(defmacro do-consonants-1 62,2937
+(defmacro do-consonants-2 69,3244
+(defmacro do-consonants-3 81,3854
+(defun read-kana-table 97,4742
+(defun populate-kana-table 108,5158
+(defun multibyte-string-codepoint 122,5696
+(defun random-with-exclusions 131,5966
+(defun kana-test-simple 146,6560
+(defun kana-test-emacs 180,8059
+
+kana.elc,87
+;ELCELC1,0
+;;; Compiled2,9
+;;; This file contains utf-8 non-ASCII characters,6,82
+
+misc.el,1269
+(defun indent-buffer 3,32
+(defun quote-region 8,161
+(defun make-scratch 21,562
+(defun find-files 37,1189
+(defmacro as-command 47,1440
+(defun re-search-line-forward 55,1745
+(defun re-search-line-backward 58,1905
+(defun replace-regexp-lisp 61,2073
+(defun princ-line 66,2335
+(defun display-buffer-temporarily69,2407
+(defun display-buffer-temporarily-and-kill81,2908
+(defun sort-words 124,4922
+(defun windswap-up 149,6040
+(defun windswap-down 150,6092
+(defun windswap-left 151,6148
+(defun windswap-right 152,6204
+(defun my-eshell-previous-input 163,6709
+(defun my-eshell-next-input 174,7120
+(defmacro if-graphical 183,7475
+(defmacro if-terminal 186,7564
+(defalias 'if-display-graphic-p if-display-graphic-p189,7658
+(defun fontify-frame 190,7705
+(defun fontify-frame-default 193,7804
+(defun fontify-frame-default-11 197,7920
+(defun resize-frame 201,8042
+(defun resize-frame-default 204,8172
+(defun SciLisp-copyright 208,8320
+(defun split-window-quarters 229,9152
+(define-generic-mode 'ebnf-modeebnf-mode246,9767
+(defun zap-up-to-char 258,10216
+(defun string-join 272,10741
+(defun matches-regex-p 276,10946
+(defun un-camel-case 285,11304
+(defun update-tags 320,12840
+(defun find-file-upwards 327,13174
+(defun update-tags-table 343,14101
+
+misc.elc,21
+function is 38,1735
+
+mlton.el,286
+(defun mlton-parse-errors 20,829
+(defun mlton-next-error 55,2381
+(defun mlton-set-main 67,2806
+(defvar sml-filename-regexp71,2893
+(defmacro save-buffer-excursion 74,3062
+(defun sml-save-buffers 79,3194
+(defun mlton-compile 92,3598
+(defun mlton-parse-errors-this-buffer 113,4429
+
+my_asm.el,512
+(defgroup my-asm 50,1787
+(defvar my-asm-comment-start 55,1941
+(defvar my-asm-comment-end 56,1976
+(defvar my-asm-comment-chars 57,2009
+(defvar my-asm-mode-syntax-table59,2046
+(defvar my-asm-mode-abbrev-table 67,2285
+(define-abbrev-table 'asm-mode-abbrev-table asm-mode-abbrev-table69,2364
+(defvar my-asm-mode-map71,2413
+(defconst asm-font-lock-keywords91,3351
+(define-derived-mode asm-mode 109,4049
+(defun asm-indent-line 147,5675
+(defun asm-calculate-indentation 162,6095
+(defun asm-colon 173,6494
+
+my_asm.elc,140
+;ELCELC1,0
+;;; Compiled2,9
+;;; This file uses dynamic docstrings,6,82
+;;; This file does not contain utf-8 non-ASCII characters,8,150
+
+my-asm-mode.el,547
+(defgroup my-asm 50,1787
+(defvar my-asm-comment-start 55,1941
+(defvar my-asm-comment-end 56,1976
+(defvar my-asm-comment-chars 57,2009
+(defvar my-asm-mode-syntax-table59,2046
+(defvar my-asm-mode-abbrev-table 67,2285
+(define-abbrev-table 'asm-mode-abbrev-table asm-mode-abbrev-table69,2364
+(defvar my-asm-mode-map71,2413
+(defvar numeric-literal80,2739
+(defconst asm-font-lock-keywords84,2951
+(define-derived-mode my-asm-mode 104,3737
+(defun asm-indent-line 141,5397
+(defun asm-calculate-indentation 156,5817
+(defun asm-colon 167,6216
+
+my-asm-mode.elc,140
+;ELCELC1,0
+;;; Compiled2,9
+;;; This file uses dynamic docstrings,6,82
+;;; This file does not contain utf-8 non-ASCII characters,8,150
+
+my-banish.el,138
+(defvar my-banish-position 2,18
+(defun my-set-mouse-position 7,334
+(defun my-banish-destination 17,780
+(defun my-banish-mouse 54,2707
+
+my-hs.el,1730
+(defgroup hideshow 235,10051
+(defcustom hs-hide-comments-when-hiding-all 240,10178
+(defcustom hs-minor-mode-hook 245,10318
+(defcustom hs-isearch-open 251,10475
+(defvar hs-special-modes-alist268,11120
+(defvar hs-hide-all-non-comment-function 302,12583
+(defvar hs-allow-nesting 305,12704
+(defvar hs-hide-hook 310,12891
+(defvar hs-show-hook 315,13125
+(defvar hs-set-up-overlay 320,13342
+(defvar hs-minor-mode 341,14168
+(defvar hs-minor-mode-map345,14331
+(defvar hs-c-start-regexp 393,16632
+(defvar hs-block-start-regexp 399,16837
+(defvar hs-block-start-mdata-select 403,16960
+(defvar hs-block-end-regexp 409,17288
+(defvar hs-forward-sexp-func 414,17402
+(defvar hs-adjust-block-beginning 423,17815
+(defvar hs-headline 444,18606
+(defun hs-discard-overlays 458,19106
+(defun hs-make-overlay 473,19658
+(defun hs-isearch-show 502,21076
+(defun hs-isearch-show-temporary 510,21297
+(defun hs-looking-at-block-start-p 541,22529
+(defun hs-forward-sexp 546,22720
+(defun hs-hide-comment-region 554,23037
+(defun hs-hide-block-at-point 563,23467
+(defun hs-inside-comment-p 599,24875
+(defun hs-grok-mode-type 657,27417
+(defun hs-find-block-beginning 689,29082
+(defun hs-hide-level-recursive 710,29778
+(defmacro hs-life-goes-on 731,30544
+(defun hs-overlay-at 742,30921
+(defun hs-already-hidden-p 751,31235
+(defun hs-c-like-adjust-block-beginning 768,31845
+(defun hs-hide-all 781,32359
+(defun hs-show-all 827,34297
+(defun hs-hide-block 837,34615
+(defun hs-show-block 854,35268
+(defun hs-hide-level 889,36554
+(defun hs-toggle-hiding 900,36904
+(defun hs-mouse-toggle-hiding 909,37122
+(defun hs-hide-initial-comment-block 919,37423
+(define-minor-mode hs-minor-mode935,38009
+(defun turn-off-hideshow 976,39518
+
+my-iswitchb.el,102
+(defun iswitchb-local-keys 1,0
+(defadvice iswitchb-kill-buffer 9,350
+(defun iswitchb-rescan 15,635
+
+sml-mode.el,5646
+(defgroup sml 120,4543
+(defcustom sml-indent-level 124,4604
+(defcustom sml-indent-args 128,4694
+(defcustom sml-rightalign-and 132,4808
+(defcustom sml-electric-pipe-mode 139,4991
+(defvar sml-mode-hook 143,5122
+(defvar sml-outline-regexp149,5261
+(defvar sml-mode-map160,5579
+(defvar sml-mode-syntax-table172,6053
+(defun sml-syms-re 211,7411
+(defconst sml-module-head-syms216,7488
+(defconst sml-=220,7575
+(defconst sml-=224,7741
+(defconst sml-non-nested-of-starter-re228,7879
+(defconst sml-starters-syms232,8047
+(defconst sml-pipeheads240,8294
+(defconst sml-keywords-regexp245,8437
+(defconst sml-tyvarseq-re258,9074
+(defcustom sml-font-lock-symbols 264,9269
+(defconst sml-font-lock-symbols-alist270,9512
+(defun sml-font-lock-compose-symbol 294,10000
+(defun sml-font-lock-symbols-keywords 316,11038
+(defconst sml-font-lock-keywords323,11260
+(defface font-lock-type-def-face349,12318
+(defvar font-lock-type-def-face 353,12470
+(defface font-lock-module-def-face356,12572
+(defvar font-lock-module-def-face 360,12728
+(defface font-lock-interface-def-face363,12836
+(defvar font-lock-interface-def-face 367,12998
+(defvar sml-syntax-prop-table374,13192
+(defconst sml-font-lock-syntactic-keywords381,13377
+(defconst sml-font-lock-defaults384,13476
+(defconst sml-smie-grammar391,13653
+(defvar sml-indent-separator-outdent 486,18049
+(defun sml-smie-rules 488,18090
+(defun sml-smie-definitional-equal-p 552,21142
+(defun sml-smie-non-nested-of-p 591,23294
+(defun sml-smie-datatype-|-p 600,23686
+(defun sml-smie-forward-token-1 612,24220
+(defun sml-smie-forward-token 621,24440
+(defun sml-smie-backward-token-1 632,24848
+(defun sml-smie-backward-token 641,25071
+(defconst sml-imenu-regexp659,25618
+(defun sml-imenu-create-index 665,25794
+(defvar sml-prog-proc-mode-map693,26690
+(defvar sml-prog-proc--buffer 708,27365
+(defstruct (sml-prog-proc-descriptor712,27508
+(defvar sml-prog-proc-descriptor 723,27839
+(defmacro sml-prog-proc--prop 726,27951
+(defmacro sml-prog-proc--call 731,28185
+(defun sml-prog-proc-proc 739,28530
+(defun sml-prog-proc-buffer 754,29256
+(defun sml-prog-proc-switch-to 758,29376
+(defun sml-prog-proc-send-string 763,29531
+(defun sml-prog-proc-load-file 773,30046
+(defvar sml-prog-proc--tmp-file 787,30635
+(defun sml-prog-proc-send-region 789,30673
+(defun sml-prog-proc-send-buffer 806,31555
+(define-derived-mode sml-prog-proc-mode 812,31840
+(defun sml-prog-proc-chdir 818,32034
+(defun sml-prog-proc-comint-input-filter-function 827,32433
+(defvar sml-prog-proc-comint-mode-map836,32928
+(define-derived-mode sml-prog-proc-comint-mode 841,33070
+(defvar sml-prog-proc--compile-command 859,33981
+(defun sml-prog-proc-compile 862,34086
+(defcustom sml-program-name 934,37257
+(defcustom sml-default-arg 938,37366
+(defcustom sml-host-name 942,37485
+(defcustom sml-config-file 946,37576
+(defcustom sml-prompt-regexp 951,37700
+(defcustom sml-compile-commands-alist955,37825
+(defvar sml-use-command 967,38294
+(defvar sml-cd-command 972,38502
+(defvar sml-error-regexp-alist979,38795
+(defconst sml-pp-functions994,39622
+(defconst inferior-sml-font-lock-keywords1004,40044
+(defface font-lock-prompt-face1016,40546
+(defvar font-lock-prompt-face 1020,40687
+(defface font-lock-command-face1023,40776
+(defvar font-lock-command-face 1027,40931
+(defconst inferior-sml-font-lock-defaults1030,41035
+(defun sml--read-run-cmd 1033,41132
+(defalias 'run-sml run-sml1044,41497
+(defun sml-run 1047,41542
+(defun sml-send-function 1085,43172
+(defvar inferior-sml-mode-map1094,43490
+(defun inferior-sml-next-error-hook 1106,43836
+(define-derived-mode inferior-sml-mode 1153,45949
+(defvar comment-quote-nested)1222,48523
+(define-derived-mode sml-mode 1225,48569
+(defun sml-mode-variables 1255,49992
+(defun sml-funname-of-and 1271,50779
+(defun sml-find-forward 1282,51214
+(defun sml-electric-pipe 1287,51392
+(defun sml-post-self-insert-pipe 1296,51702
+(defun sml-mark-function 1347,53985
+(defun sml-back-to-outer-indent 1362,54457
+(defun sml-find-matching-starter 1384,55256
+(defun sml-skip-siblings 1398,55695
+(defun sml-beginning-of-defun 1409,56047
+(defcustom sml-max-name-components 1421,56631
+(defun sml-current-fun-name 1425,56758
+(defvar sml-forms-alist 1441,57186
+(defmacro sml-def-skeleton 1453,57762
+(defun sml-forms-menu 1515,59372
+(defvar sml-last-form 1519,59474
+(defun sml-electric-space 1521,59504
+(defun sml-insert-form 1532,59938
+(defvar sml-mlton-command 1561,60986
+(defvar sml-mlton-mainfile 1564,61073
+(defconst sml-mlton-error-regexp-alist1566,61106
+(defvar compilation-error-regexp-alist)1574,61409
+(defun sml-mlton-typecheck 1579,61576
+(defvar sml-defuse-file 1601,62328
+(defun sml-defuse-file 1603,62358
+(defun sml-defuse-set-file 1606,62431
+(defun sml-defuse-symdata-at-point 1611,62575
+(defconst sml-defuse-def-regexp1630,63360
+(defconst sml-defuse-use-regexp-format 1632,63463
+(defun sml-defuse-jump-to-def 1634,63524
+(defvar sml-cm-mode-syntax-table 1675,65375
+(defvar sml-cm-font-lock-keywords1676,65431
+(define-derived-mode sml-cm-mode 1687,65845
+(defvar sml-lex-font-lock-keywords1697,66176
+(defconst sml-lex-font-lock-defaults1702,66348
+(define-derived-mode sml-lex-mode 1706,66468
+(defface sml-yacc-bnf-face1714,66670
+(defvar sml-yacc-bnf-face 1717,66795
+(defcustom sml-yacc-indent-action 1719,66842
+(defcustom sml-yacc-indent-pipe 1723,66954
+(defcustom sml-yacc-indent-term 1728,67111
+(defvar sml-yacc-font-lock-keywords1733,67250
+(defconst sml-yacc-font-lock-defaults1746,67925
+(defun sml-yacc-indent-line 1749,68032
+(defun sml-yacc-indentation 1757,68318
+(define-derived-mode sml-yacc-mode 1794,69636
+
+sunrise-commander.el,17227
+(defgroup sunrise 221,10661
+(defcustom sr-show-file-attributes 225,10741
+(defcustom sr-autoload-extensions 232,10978
+(defcustom sr-show-hidden-files 238,11185
+(defcustom sr-terminal-kill-buffer-on-exit 247,11545
+(defcustom sr-terminal-program 252,11696
+(defcustom sr-listing-switches 259,11896
+(defcustom sr-virtual-listing-switches 268,12188
+(defcustom sr-avfs-root 274,12400
+(defcustom sr-avfs-handlers-alist 282,12690
+(defcustom sr-md5-shell-command 294,13299
+(defcustom sr-window-split-style 301,13583
+(defcustom sr-windows-locked 310,13830
+(defcustom sr-windows-default-ratio 315,13965
+(defcustom sr-history-length 326,14426
+(defcustom sr-kill-unused-buffers 331,14555
+(defcustom sr-confirm-kill-viewer 337,14730
+(defcustom sr-attributes-display-mask 343,14890
+(defcustom sr-fast-backup-extension 356,15503
+(defcustom sr-traditional-other-window 366,15870
+(defcustom sr-fuzzy-negation-character 374,16192
+(defcustom sr-init-hook 381,16472
+(defcustom sr-start-hook 387,16635
+(defcustom sr-refresh-hook 393,16798
+(defcustom sr-quit-hook 399,16956
+(defvar sr-restore-buffer 405,17115
+(defvar sr-prior-window-configuration 408,17189
+(defvar sr-running 411,17286
+(defvar sr-synchronized 414,17360
+(defvar sr-current-window-overlay 417,17434
+(defvar sr-clex-hotchar-overlay 420,17542
+(defvar sr-left-directory 423,17656
+(defvar sr-left-buffer 426,17762
+(defvar sr-left-window 429,17829
+(defvar sr-right-directory 432,17888
+(defvar sr-right-buffer 435,17996
+(defvar sr-right-window 438,18065
+(defvar sr-current-frame 441,18126
+(defvar sr-this-directory 444,18202
+(defvar sr-other-directory 448,18329
+(defvar sr-selected-window 451,18404
+(defvar sr-selected-window-width 454,18488
+(defvar sr-history-registry 457,18585
+(defvar sr-history-stack 460,18685
+(defvar sr-ti-openterms 467,19019
+(defvar sr-ediff-on 470,19095
+(defvar sr-clex-on 473,19189
+(defvar sr-virtual-buffer 476,19277
+(defvar sr-dired-directory 480,19392
+(defvar sr-start-message483,19482
+(defvar sr-panes-height 487,19624
+(defvar sr-current-path-faces 491,19736
+(defvar sr-inhibit-highlight 495,19895
+(defvar sr-find-items 498,20002
+(defvar sr-desktop-save-handlers 501,20110
+(defvar sr-desktop-restore-handlers 504,20226
+(defvar sr-backup-buffer 507,20348
+(defvar sr-goto-dir-function 511,20490
+(defconst sr-side-lookup 516,20679
+(defface sr-active-path-face519,20825
+(defface sr-passive-path-face527,21148
+(defface sr-editing-path-face536,21544
+(defface sr-highlight-path-face541,21741
+(defface sr-clex-hotchar-face546,21912
+(define-derived-mode sr-mode 560,22469
+(define-derived-mode sr-virtual-mode 761,33729
+(defmacro sr-within 783,34710
+(defmacro sr-save-aspect 794,35068
+(defmacro sr-alternate-buffer 812,35825
+(defmacro sr-in-other 829,36482
+(defmacro sr-silently 844,36974
+(defun sr-dired-mode 854,37344
+(defun sr-bookmark-jump 870,38103
+(defun sr-virtualize-pane 885,38793
+(defun sr-virtual-dismiss 897,39178
+(defun sr-select-window 908,39549
+(defun sr-viewer-window 915,39798
+(defun sr-select-viewer-window 927,40355
+(defun sr-backup-buffer 941,40878
+(defun sr-kill-backup-buffer 951,41275
+(defun sr-enrich-buffer 960,41677
+(defun sr-extend-with 967,41972
+(defadvice dired-find-buffer-nocreate974,42312
+(defadvice dired-dwim-target-directory981,42592
+(defadvice other-window989,42916
+(defadvice use-hard-newlines1006,43572
+(defadvice dired-insert-set-properties1016,43920
+(define-key sr-mode-map 1028,44422
+(define-key sr-mode-map 1029,44486
+(define-key sr-mode-map 1030,44550
+(define-key sr-mode-map 1031,44617
+(define-key sr-mode-map 1032,44671
+(define-key sr-mode-map 1033,44725
+(define-key sr-mode-map 1034,44777
+(define-key sr-mode-map 1035,44829
+(define-key sr-mode-map 1036,44890
+(define-key sr-mode-map 1037,44951
+(define-key sr-mode-map 1038,45006
+(define-key sr-mode-map 1039,45065
+(define-key sr-mode-map 1040,45126
+(define-key sr-mode-map 1041,45182
+(define-key sr-mode-map 1042,45238
+(define-key sr-mode-map 1043,45294
+(define-key sr-mode-map 1044,45353
+(define-key sr-mode-map 1045,45415
+(define-key sr-mode-map 1046,45463
+(define-key sr-mode-map 1048,45518
+(define-key sr-mode-map 1049,45575
+(define-key sr-mode-map 1050,45639
+(define-key sr-mode-map 1051,45702
+(define-key sr-mode-map 1052,45759
+(define-key sr-mode-map 1053,45815
+(define-key sr-mode-map 1054,45876
+(define-key sr-mode-map 1055,45938
+(define-key sr-mode-map 1056,45995
+(define-key sr-mode-map 1057,46051
+(define-key sr-mode-map 1058,46105
+(define-key sr-mode-map 1059,46163
+(define-key sr-mode-map 1060,46221
+(define-key sr-mode-map 1061,46277
+(define-key sr-mode-map 1062,46332
+(define-key sr-mode-map 1063,46387
+(define-key sr-mode-map 1064,46448
+(define-key sr-mode-map 1065,46513
+(define-key sr-mode-map 1066,46573
+(define-key sr-mode-map 1067,46629
+(define-key sr-mode-map 1068,46682
+(define-key sr-mode-map 1069,46737
+(define-key sr-mode-map 1070,46798
+(define-key sr-mode-map 1071,46864
+(define-key sr-mode-map 1073,46931
+(define-key sr-mode-map 1074,46982
+(define-key sr-mode-map 1075,47034
+(define-key sr-mode-map 1076,47087
+(define-key sr-mode-map 1077,47140
+(define-key sr-mode-map 1078,47201
+(define-key sr-mode-map 1079,47255
+(define-key sr-mode-map 1080,47312
+(define-key sr-mode-map 1081,47367
+(define-key sr-mode-map 1082,47421
+(define-key sr-mode-map 1083,47477
+(define-key sr-mode-map 1084,47533
+(define-key sr-mode-map 1085,47590
+(define-key sr-mode-map 1086,47650
+(define-key sr-mode-map 1087,47708
+(define-key sr-mode-map 1088,47765
+(define-key sr-mode-map 1089,47826
+(define-key sr-mode-map 1091,47883
+(define-key sr-mode-map 1092,47931
+(define-key sr-mode-map 1093,47980
+(define-key sr-mode-map 1095,48038
+(define-key sr-mode-map 1096,48086
+(define-key sr-mode-map 1097,48139
+(define-key sr-mode-map 1098,48192
+(define-key sr-mode-map 1099,48250
+(define-key sr-mode-map 1100,48305
+(define-key sr-mode-map 1101,48355
+(define-key sr-mode-map 1102,48411
+(define-key sr-mode-map 1103,48467
+(define-key sr-mode-map 1104,48529
+(define-key sr-mode-map 1105,48588
+(define-key sr-mode-map 1106,48644
+(define-key sr-mode-map 1107,48711
+(define-key sr-mode-map 1108,48775
+(define-key sr-mode-map 1109,48828
+(define-key sr-mode-map 1110,48894
+(define-key sr-mode-map 1111,48961
+(define-key sr-mode-map 1112,49014
+(define-key sr-mode-map 1114,49074
+(define-key sr-mode-map 1115,49133
+(define-key sr-mode-map 1116,49192
+(define-key sr-mode-map 1117,49251
+(define-key sr-mode-map 1118,49310
+(define-key sr-mode-map 1119,49369
+(define-key sr-mode-map 1120,49428
+(define-key sr-mode-map 1121,49486
+(define-key sr-mode-map 1122,49556
+(define-key sr-mode-map 1123,49626
+(define-key sr-mode-map 1124,49696
+(define-key sr-mode-map 1125,49757
+(define-key sr-mode-map 1126,49818
+(define-key sr-mode-map 1127,49872
+(define-key sr-mode-map 1128,49937
+(define-key sr-mode-map 1129,50003
+(define-key sr-mode-map 1130,50064
+(define-key sr-mode-map 1131,50126
+(define-key sr-mode-map 1133,50189
+(define-key sr-mode-map 1134,50237
+(define-key sr-mode-map 1135,50288
+(define-key sr-mode-map 1136,50347
+(define-key sr-mode-map 1137,50406
+(define-key sr-mode-map 1138,50463
+(define-key sr-mode-map 1139,50511
+(define-key sr-mode-map 1140,50571
+(define-key sr-mode-map 1141,50622
+(define-key sr-mode-map 1142,50679
+(define-key sr-mode-map 1143,50730
+(define-key sr-mode-map 1144,50790
+(define-key sr-mode-map 1145,50838
+(define-key sr-mode-map 1146,50890
+(define-key sr-mode-map 1148,50953
+(define-key sr-mode-map 1149,51023
+(define-key sr-mode-map 1151,51087
+(define-key sr-mode-map 1152,51154
+(define-key sr-mode-map 1153,51224
+(define-key sr-mode-map 1154,51296
+(define-key sr-mode-map 1155,51365
+(define-key sr-mode-map 1156,51422
+(define-key sr-mode-map 1157,51487
+(define-key sr-mode-map 1158,51553
+(define-key sr-mode-map 1160,51620
+(defvar sr-commander-keys1162,51678
+(defcustom sr-use-commander-keys 1181,52449
+(defun sunrise 1198,53143
+(defun sr-dired 1235,54642
+(defun sr-choose-cd-target 1256,55584
+(defun sunrise-cd 1263,55798
+(defun sr-this 1275,56342
+(defun sr-other 1284,56695
+(defmacro sr-setup-pane 1297,57207
+(defun sr-setup-visible-panes 1307,57626
+(defun sr-setup-windows(1314,57815
+(defun sr-switch-to-nonpane-buffer 1346,58955
+(defun sr-restore-prior-configuration 1356,59365
+(defun sr-lock-window 1362,59625
+(defun sr-highlight(1387,60666
+(defun sr-unhighlight 1402,61222
+(defun sr-hide-avfs-root 1409,61519
+(defun sr-highlight-broken-links 1421,61996
+(defsubst sr-invalid-overlayp 1429,62324
+(defun sr-graphical-highlight 1436,62657
+(defun sr-force-passive-highlight 1469,63777
+(defun sr-quit 1481,64350
+(defun sr-save-directories 1504,65031
+(defun sr-bury-panes 1518,65613
+(defun sr-save-panes-width 1524,65804
+(defun sr-restore-panes-width 1534,66206
+(defun sr-resize-panes 1542,66536
+(defun sr-enlarge-left-pane 1552,66951
+(defun sr-enlarge-right-pane 1559,67158
+(defun sr-get-panes-size 1566,67368
+(defun sr-enlarge-panes 1574,67685
+(defun sr-shrink-panes 1593,68319
+(defun sr-lock-panes 1612,68927
+(defun sr-max-lock-panes 1635,69762
+(defun sr-min-lock-panes 1640,69855
+(defun sr-advertised-find-file 1648,70068
+(defun sr-advertised-execute-file 1666,70858
+(defun sr-find-file 1684,71716
+(defun sr-virtual-directory-p 1696,72378
+(defun sr-avfs-directory-p 1700,72570
+(defun sr-find-regular-directory 1711,73094
+(defun sr-find-virtual-directory 1720,73466
+(defun sr-find-regular-file 1729,73762
+(defun sr-avfs-dir 1740,74249
+(defun sr-goto-dir 1749,74666
+(defun sr-dired-prev-subdir 1764,75312
+(defun sr-follow-file 1778,75957
+(defun sr-follow-viewer 1806,77064
+(defun sr-project-path 1821,77675
+(defun sr-history-push 1856,79340
+(defun sr-history-next 1872,79974
+(defun sr-history-prev 1881,80257
+(defun sr-history-move 1889,80579
+(defun sr-history-stack-reset 1906,81325
+(defun sr-history-pick 1911,81493
+(defun sr-require-checkpoints-extension 1923,82056
+(defmacro sr-checkpoint-command 1940,82726
+(defun sr-do-find-marked-files 1952,83209
+(defun sr-change-window(1966,83795
+(defun sr-mouse-change-window 1975,84121
+(defun sr-beginning-of-buffer(1982,84329
+(defun sr-end-of-buffer(1991,84616
+(defun sr-focus-filename 1998,84816
+(defun sr-split-toggle(2018,85623
+(defun sr-split-setup(2029,85993
+(defun sr-transpose-panes 2039,86349
+(defun sr-synchronize-panes 2056,86970
+(defun sr-browse-pane 2075,87675
+(defun sr-browse-file 2086,88082
+(defun sr-revert-buffer 2100,88605
+(defun sr-kill-pane-buffer 2125,89708
+(defun sr-quick-view 2138,90294
+(defun sr-quick-view-kill 2153,90980
+(defun sr-quick-view-directory 2162,91367
+(defun sr-quick-view-symlink 2167,91546
+(defun sr-quick-view-file 2174,91846
+(defun sr-mask-attributes 2198,92934
+(defun sr-display-attributes 2226,94227
+(defun sr-toggle-attributes 2246,95010
+(defun sr-toggle-truncate-lines 2252,95258
+(defun sr-truncate-p 2264,95687
+(defun sr-truncate-v 2271,95956
+(defun sr-sort-order 2279,96228
+(defmacro sr-defun-sort-by 2295,96906
+(defun sr-sort-by-number 2306,97338
+(defun sr-interactive-sort 2314,97726
+(defun sr-reverse-pane 2326,98119
+(defun sr-sort-virtual 2337,98585
+(defun sr-sort-by-operation 2353,99247
+(defun sr-numerical-sort-op 2392,100990
+(defun sr-attribute-sort-op 2412,101605
+(defun sr-build-sort-lists 2444,102985
+(defun sr-compare 2460,103669
+(defun sr-scroll-up 2476,104510
+(defun sr-scroll-down 2485,104774
+(defun sr-scroll-quick-view 2494,105046
+(defun sr-scroll-quick-view-down 2499,105206
+(defun sr-undo 2504,105380
+(defun sr-sync 2513,105643
+(defun sr-mark-sync 2522,106000
+(defun sr-next-line-other 2533,106413
+(defun sr-prev-line-other 2538,106542
+(defun sr-goto-dir-other 2543,106670
+(defun sr-advertised-find-file-other 2550,106971
+(defun sr-mouse-advertised-find-file 2564,107505
+(defun sr-prev-subdir-other 2570,107678
+(defun sr-follow-file-other 2576,107881
+(defun sr-history-prev-other 2582,108093
+(defun sr-history-next-other 2587,108255
+(defun sr-mark-other 2592,108417
+(defun sr-unmark-backward-other 2598,108585
+(defun sr-unmark-all-marks-other 2602,108689
+(defun sr-progress-prompt 2610,108943
+(defun sr-make-progress-reporter 2614,109068
+(defun sr-progress-reporter-update 2629,109755
+(defun sr-progress-reporter-done 2635,110056
+(defun sr-create-files 2642,110339
+(defun sr-editable-pane 2666,111506
+(defun sr-readonly-pane 2677,111905
+(defmacro sr-protect-terminate-wdired 2685,112118
+(defun sr-terminate-wdired 2695,112536
+(defun sr-do-copy 2718,113300
+(defun sr-do-symlink 2739,114157
+(defun sr-do-relsymlink 2746,114425
+(defun sr-do-hardlink 2756,114786
+(defun sr-do-rename 2763,115043
+(defun sr-do-delete 2786,116071
+(defun sr-do-flagged-delete 2801,116645
+(defun sr-do-clone 2811,117003
+(defun sr-fast-backup-files 2839,118160
+(defun sr-clone 2851,118658
+(defun sr-clone-files 2866,119307
+(defun sr-clone-directory 2903,120886
+(defsubst sr-move-op 2916,121559
+(defun sr-move-files 2924,121905
+(defun sr-link 2945,122825
+(defun sr-virtual-target 2958,123512
+(defun sr-copy-virtual 2967,123815
+(defun sr-ask 2987,124541
+(defun sr-ask-overwrite 2998,125011
+(defun sr-y-n-or-a-p 3002,125172
+(defun sr-overlapping-paths-p 3018,125728
+(defun sr-list-of-contents 3027,126078
+(defun sr-list-of-directories 3032,126284
+(defun sr-list-of-files 3040,126688
+(defun sr-filter 3047,126941
+(defun sr-directory-name-proper 3056,127205
+(defun sr-compare-panes 3068,127708
+(defun sr-ask-compare-panes-predicate 3092,128823
+(defun sr-files-attributes 3110,129565
+(defun sr-pane-files 3124,130084
+(defvar sr-md5 3134,130376
+(defun sr-md5 3135,130444
+(defun sr-diff 3156,131345
+(defun sr-ediff 3162,131516
+(defun sr-diff-form 3180,132097
+(defun sr-pop-mark 3199,132835
+(defun sr-process-kill 3214,133303
+(defvar sr-process-map 3223,133598
+(defun sr-find-decorate-buffer 3229,133897
+(defun sr-find-apply 3252,134829
+(defun sr-find 3272,135723
+(defun sr-find-name 3277,135901
+(defun sr-find-grep 3282,136091
+(defadvice find-dired-sentinel3294,136566
+(defadvice find-dired-filter3304,136940
+(defun sr-multifind-handler 3316,137472
+(defun sr-flatten-branch 3334,138386
+(defun sr-prune-paths 3347,138891
+(defun sr-locate-filter 3356,139215
+(defun sr-locate-sentinel 3372,139935
+(defun sr-locate-prompt 3387,140466
+(defvar locate-command)3392,140675
+(defun sr-locate 3394,140752
+(defun sr-fuzzy-narrow 3416,141751
+(defun sr-recent-files 3461,144054
+(defun sr-recent-directories 3478,144625
+(defun sr-switch-to-clean-buffer 3496,145407
+(defun sr-pure-virtual 3500,145514
+(defun sr-dired-do-apply 3519,146218
+(defun sr-do-query-replace-regexp 3533,146668
+(defun sr-do-search 3538,146852
+(defun sr-sticky-isearch-prompt 3543,146994
+(defvar sr-sticky-isearch-commands3548,147217
+(defun sr-sticky-isearch-remap-commands 3558,147604
+(defun sr-sticky-isearch 3572,148339
+(defun sr-sticky-isearch-forward 3586,148919
+(defun sr-sticky-isearch-backward 3591,149050
+(defun sr-sticky-post-isearch 3596,149185
+(defun sr-show-files-info 3620,150249
+(defun sr-files-size 3649,151489
+(defun sr-directory-size 3663,152063
+(defun sr-size-format 3667,152221
+(defun sr-term 3683,152855
+(defun sr-term-cd 3706,153827
+(defun sr-term-cd-newterm 3713,154008
+(defun sr-term-cd-program 3720,154195
+(defmacro sr-term-excursion 3725,154361
+(defun sr-term-line-mode 3753,155626
+(defun sr-term-char-mode 3760,155830
+(defun sr-term-extern 3768,156065
+(defun sr-term-eshell 3787,156854
+(defmacro sr-ti 3797,157228
+(defun sr-ti-previous-line 3809,157596
+(defun sr-ti-next-line 3814,157740
+(defun sr-ti-select 3819,157878
+(defun sr-ti-mark 3824,158033
+(defun sr-ti-unmark 3829,158159
+(defun sr-ti-prev-subdir 3834,158309
+(defun sr-ti-unmark-all-marks 3840,158515
+(defun sr-ti-change-window 3845,158663
+(defun sr-ti-change-pane 3850,158798
+(defun sr-ti-revert-buffer 3861,159124
+(defun sr-ti-lock-panes 3869,159365
+(defun sr-ti-min-lock-panes 3874,159510
+(defun sr-ti-max-lock-panes 3879,159635
+(defmacro sr-clex 3884,159760
+(defun sr-clex-marked 3892,160050
+(defun sr-clex-file 3898,160240
+(defun sr-clex-marked-nodir 3904,160405
+(defun sr-clex-dir 3911,160632
+(defun sr-clex-start 3917,160797
+(defun sr-clex-commit 3936,161474
+(define-minor-mode sr-term-char-minor-mode3965,162788
+(define-minor-mode sr-term-line-minor-mode3980,163306
+(defadvice term-sentinel 4014,164565
+(defun sr-pure-virtual-p 4028,165114
+(defun sr-desktop-save-buffer 4038,165578
+(defun sr-desktop-restore-buffer 4059,166519
+(defun sr-desktop-sort 4093,168057
+(defun sr-reset-state 4107,168684
+(defun sr-buffer-files 4133,169781
+(defun sr-keep-buffer 4144,170166
+(defun sr-scrollable-viewer 4154,170649
+(defun sr-describe-mode 4161,170990
+(defun sr-equal-dirs 4168,171213
+(defun sr-summary 4173,171469
+(defun sr-restore-point-if-same-buffer 4180,171703
+(defun sr-mark-toggle 4191,172138
+(defun sr-assoc-key 4199,172371
+(defun sr-quote-marked 4208,172670
+(defun sr-fix-listing-switches(4219,173147
+(defun sr-chop 4231,173807
+(defun sr-ad-enable 4241,174145
+(defun sr-ad-disable 4251,174527
+(defun sunrise-commander-unload-function 4261,174913
+(defmacro sr-rainbow 4267,175104
+
+wind-swap.el,37
+(defun swap-buffers-in-windows 3,54
+
+kana_table.el,0
+
+fold-this-autoloads.el,0
+
+compat.el,0
